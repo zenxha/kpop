@@ -1,6 +1,6 @@
 ![Sushi](https://cdn.discordapp.com/attachments/784178874303905792/812833268171800596/unknown.png)
-# Sushi
-Group Project for tri2!
+# KPOP
+Group Project for tri3!
 ### Links
 - [Project Board](https://github.com/zenxha/sushi/projects/4)
 - [Runtime Link](http://rubinfamily.dyndns.org:5000/)

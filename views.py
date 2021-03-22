@@ -135,7 +135,6 @@ def login_post():
 @app.route('/profile/<int:id>')
 def profile(id):
     img = 2
-
     return render_template("homesite/profile.html", name=current_user.name)
 """
 
@@ -205,4 +204,3 @@ def get_all_reviews():
         reviews_dict[review.id] = review_dict
 
     return jsonify(reviews_dict)
-

@@ -1,6 +1,6 @@
 """Views in MVC has responsibility for establishing routes and rendering HTML"""
 
-from __init__ import app
+from __init__ import create_app
 import random
 import requests
 import flask, json
@@ -9,8 +9,8 @@ from flask import render_template, request, redirect, url_for, session, flash, F
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
-from db import db_init, db
-from model import Review, User
+#from db import db_init, db
+#from model import Review, User
 with open('config.json') as file:
     config = json.load(file)
 
@@ -19,7 +19,7 @@ app = Flask(__name__)
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db_init(app)
+#db_init(app)
 
 db = SQLAlchemy()
 
@@ -40,7 +40,7 @@ def index():
     quote = response.json()['content']
     author = response.json()['author']
     background = random.choice(backgrounds)
-    return render_template("homesite/home.html", background=background, quote=quote, author = author)
+    return render_template("base.html", background=background, quote=quote, author = author)
 
 
 """our own project dstufsuf as"""

@@ -9,6 +9,7 @@ from flask import render_template, request, redirect, url_for, session, flash, F
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
+from sample_bp import bp
 #from db import db_init, db
 #from model import Review, User
 with open('config.json') as file:
@@ -16,6 +17,7 @@ with open('config.json') as file:
 
 
 app = Flask(__name__)
+app.register_blueprint(bp, url_prefix="/admin")
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

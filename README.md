@@ -12,7 +12,7 @@ Group Project for tri3!
 - Komay Sugiyama ID: #30739783
 - Chris Rubin ID: #72892271
 - Devam Shrivastava ID: #51984972
-- Eshaan Parlikar ID: #
+- Eshaan Parlikar ID: ##32022538
 
 ### Navigating our website
 - Once on the website, use the navbar in the top right to check out each section

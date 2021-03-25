@@ -3,7 +3,7 @@
 Group Project for tri3!
 ### Links
 - [Project Board](https://github.com/zenxha/kpop/projects/1)
-- [Deployed Website](rubinfamily.dyndns.org:5000)
+- [Deployed Website](http://rubinfamily.dyndns.org:5000/)
 - [Project Plan](https://docs.google.com/document/d/19tdgx0iDYYwwMcTxbIoo4nPW9igqUoKptFVv5eDoNms/edit)
 
 

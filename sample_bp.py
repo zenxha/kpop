@@ -6,6 +6,6 @@ bp = Blueprint('example_blueprint', __name__)
 def index():
     return "Hello World!"
 
-@bp.route2('/')
+@bp.route('/base')
 def purpose():
     return render_template("base.html")

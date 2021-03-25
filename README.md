@@ -4,7 +4,7 @@ Group Project for tri3!
 ### Links
 - [Project Board](https://github.com/zenxha/sushi/projects/4)
 - [Runtime Link](http://rubinfamily.dyndns.org:5000/)
-- [Project Plan] (https://docs.google.com/document/d/19tdgx0iDYYwwMcTxbIoo4nPW9igqUoKptFVv5eDoNms/edit)
+- [Project Plan](https://docs.google.com/document/d/19tdgx0iDYYwwMcTxbIoo4nPW9igqUoKptFVv5eDoNms/edit)
 
 
 ### Collaborators

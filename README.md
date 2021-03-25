@@ -8,11 +8,11 @@ Group Project for tri3!
 
 
 ### Collaborators
-- Charlie Zhu
+- Charlie Zhu ID: #72889453
 - Komay Sugiyama ID: #30739783
 - Chris Rubin ID: #72892271
-- Devam Shrivastava ID: 51984972
-- Eshaan Parlikar
+- Devam Shrivastava ID: #51984972
+- Eshaan Parlikar ID: #
 
 ### Navigating our website
 - Once on the website, use the navbar in the top right to check out each section

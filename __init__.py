@@ -14,9 +14,6 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    from . import sample_bp
-    app.register_blueprint(sample_bp.bp)
-
 
     db.init_app(app)
     return app

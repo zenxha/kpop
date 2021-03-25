@@ -17,7 +17,7 @@ with open('config.json') as file:
 
 
 app = Flask(__name__)
-app.register_blueprint(bp, url_prefix="/admin")
+app.register_blueprint(bp, url_prefix="/kpop")
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

@@ -1,16 +1,18 @@
 ![Sushi](https://cdn.discordapp.com/attachments/784178874303905792/812833268171800596/unknown.png)
-# Sushi
-Group Project for tri2!
+# Kpop Music Site!
+Group Project for tri3!
 ### Links
 - [Project Board](https://github.com/zenxha/sushi/projects/4)
 - [Runtime Link](http://rubinfamily.dyndns.org:5000/)
-- [Easter Egg Link (Use mort as username)](http://rubinfamily.dyndns.org:5000/upload)
+- [Project Plan] (https://docs.google.com/document/d/19tdgx0iDYYwwMcTxbIoo4nPW9igqUoKptFVv5eDoNms/edit)
+
 
 ### Collaborators
-- Allen Xu ID: #72947445
+- Charlie Zhu
 - Komay Sugiyama ID: #30739783
 - Chris Rubin ID: #72892271
 - Devam Shrivastava ID: 51984972
+- Eshaan Parlikar
 
 ### Navigating our website
 - Once on the website, use the navbar in the top right to check out each section

@@ -1,11 +1,21 @@
-from flask import Blueprint, render_template
-
-bp = Blueprint('bp', __name__, url_prefix="/admin", static_folder="static", template_folder="templates")
+from flask import Blueprint
+from flask import render_template, request, redirect, url_for, session, flash, Flask, Response, Blueprint
+bp = Blueprint('bp', __name__)
+bp2 = Blueprint('bp2', __name__)
 
 @bp.route('/')
 def index():
-    return render_template('base.html')
+    return "I love K-Pop!"
 
-@bp.route('/test')
-def test():
-    return "<h1>Test<h1>"
+@bp.route('/base')
+def purpose():
+    return render_template("base.html")
+
+@bp2.route('/')
+def index2():
+    return "I love J-Pop!"
+
+@bp2.route('/base')
+def purpose2():
+    return render_template("base.html")
+

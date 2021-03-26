@@ -1,4 +1,4 @@
-![Kpop/Jpop Music](https://cdn.discordapp.com/attachments/784178874303905792/812833268171800596/unknown.png)
+![image](https://user-images.githubusercontent.com/72889453/112562148-e5cc1c00-8d93-11eb-9cf6-0d238e2d6baa.png)
 # Kpop Music Site!
 Group Project for tri3!
 ### Links

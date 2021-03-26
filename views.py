@@ -9,6 +9,8 @@ from flask import render_template, request, redirect, url_for, session, flash, F
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
+
+from api_view import api
 from sample_bp import bp
 #from db import db_init, db
 #from model import Review, User
@@ -18,6 +20,8 @@ with open('config.json') as file:
 
 app = Flask(__name__)
 app.register_blueprint(bp, url_prefix="/admin")
+app.register_blueprint(api, url_prefix="/api")
+
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -50,9 +54,7 @@ def index():
 @app.route('/project')
 def project():
     return render_template("homesite/project.html", background=random.choice(backgrounds))
-@app.route('/api')
-def api():
-    return "Current endpoints: <br><br>"+ config['websiteURL'] + "/api/review/id={ID}  - Returns a review object with the same id<br><br>" + config['websiteURL'] + "/api/review/all  - Returns all reviews stored on the server. "
+
 @app.route('/easteregg')
 def easteregg():
     return render_template("easteregg/base.html", background="https://i.pinimg.com/originals/b8/e2/70/b8e270b7237f2f4c3a5905e6a3ca5f63.png")
@@ -171,38 +173,3 @@ def logout():
     session.pop('user')
     return redirect(url_for("index"))
 
-@app.route('/api/review/id=<int:id>')
-def get_review(id):
-    review = Review.query.filter_by(id=id).first()
-    if review:
-        url = url_for('get_img', id=id)
-
-        review_dict = {
-            'id': review.id,
-            'username': review.username,
-            'content': review.content,
-            'satisfaction_level': review.satisfaction,
-            'image_url': config['websiteURL'] + url
-        }
-        return jsonify(review_dict)
-
-    else:
-        return Response("No review with that id ", status=400)
-
-@app.route('/api/review/all')
-def get_all_reviews():
-    review_query = Review.query.all()
-    reviews_dict = {}
-
-    for review in review_query:
-        websiteurl = url_for('get_img', id=review.id)
-        review_dict = {
-            'id': review.id,
-            'username': review.username,
-            'content': review.content,
-            'satisfaction': review.satisfaction,
-            'image':  websiteurl
-        }
-        reviews_dict[review.id] = review_dict
-
-    return jsonify(reviews_dict)

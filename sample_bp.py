@@ -9,7 +9,7 @@ def index():
 
 @bp.route('/base')
 def purpose():
-    return render_template("base.html")
+    return render_template("base2.html")
 
 @bp2.route('/')
 def index2():
@@ -17,5 +17,5 @@ def index2():
 
 @bp2.route('/base')
 def purpose2():
-    return render_template("base.html")
+    return render_template("base2.html")
 

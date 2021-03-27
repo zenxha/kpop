@@ -1,16 +1,17 @@
 """Views in MVC has responsibility for establishing routes and rendering HTML"""
 
-from __init__ import create_app
 import random
 import requests
-import flask, json
+import json
 from flask import g, jsonify
-from flask import render_template, request, redirect, url_for, session, flash, Flask, Response, Blueprint
+from flask import render_template, request, redirect, url_for, session, Flask, Response
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
-from sample_bp import bp
-from sample_bp import bp2
+from BlueprintsIndividual.sample_bp import bp
+from BlueprintsIndividual.sample_bp import bp2
+from BlueprintsIndividual.api_view import api
+from BlueprintsIndividual.charlie import cz
 #from db import db_init, db
 #from model import Review, User
 with open('config.json') as file:
@@ -20,6 +21,8 @@ with open('config.json') as file:
 app = Flask(__name__)
 app.register_blueprint(bp, url_prefix="/kpop")
 app.register_blueprint(bp2, url_prefix="/jpop")
+app.register_blueprint(api)
+app.register_blueprint(cz)
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -44,7 +47,7 @@ def index():
     quote = response.json()['content']
     author = response.json()['author']
     background = random.choice(backgrounds)
-    return render_template("base.html", background=background, quote=quote, author = author)
+    return render_template("base2.html", background=background, quote=quote, author = author)
 
 
 """our own project dstufsuf as"""
@@ -52,9 +55,6 @@ def index():
 @app.route('/project')
 def project():
     return render_template("homesite/project.html", background=random.choice(backgrounds))
-@app.route('/api')
-def api():
-    return "Current endpoints: <br><br>"+ config['websiteURL'] + "/api/review/id={ID}  - Returns a review object with the same id<br><br>" + config['websiteURL'] + "/api/review/all  - Returns all reviews stored on the server. "
 @app.route('/easteregg')
 def easteregg():
     return render_template("easteregg/base.html", background="https://i.pinimg.com/originals/b8/e2/70/b8e270b7237f2f4c3a5905e6a3ca5f63.png")
@@ -173,38 +173,3 @@ def logout():
     session.pop('user')
     return redirect(url_for("index"))
 
-@app.route('/api/review/id=<int:id>')
-def get_review(id):
-    review = Review.query.filter_by(id=id).first()
-    if review:
-        url = url_for('get_img', id=id)
-
-        review_dict = {
-            'id': review.id,
-            'username': review.username,
-            'content': review.content,
-            'satisfaction_level': review.satisfaction,
-            'image_url': config['websiteURL'] + url
-        }
-        return jsonify(review_dict)
-
-    else:
-        return Response("No review with that id ", status=400)
-
-@app.route('/api/review/all')
-def get_all_reviews():
-    review_query = Review.query.all()
-    reviews_dict = {}
-
-    for review in review_query:
-        websiteurl = url_for('get_img', id=review.id)
-        review_dict = {
-            'id': review.id,
-            'username': review.username,
-            'content': review.content,
-            'satisfaction': review.satisfaction,
-            'image':  websiteurl
-        }
-        reviews_dict[review.id] = review_dict
-
-    return jsonify(reviews_dict)

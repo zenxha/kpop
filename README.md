@@ -18,7 +18,7 @@ Group Project for tri3!
 
 |Member|Tickets|
 | --- | --- |
-|Eshaan|<ul><li>[Working on the setup of a top 5 songs section (Working with Chris)](https://github.com/zenxha/kpop/projects/1#card-57725161)</li><ul>|
+|Eshaan|<ul><li>[Worked on setup of Blueprints](https://github.com/zenxha/kpop/blob/main/BlueprintsIndividual/sample_bp.py) Working on the setup of a top 5 songs section (Working with Chris)](https://github.com/zenxha/kpop/projects/1#card-57725161)</li><ul>|
 |Chris|<ul><li>[Worked on setup of Blueprints](https://github.com/zenxha/kpop/projects/1#card-57459631) [Working on setting up a regularly updated top 5 songs section (Working with Eshaan)](https://github.com/zenxha/kpop/projects/1#card-57725161)</li><ul>|
 |Devam|<ul><li>[Working on Database to store user information such as playlists](https://github.com/zenxha/kpop/projects/1#card-57721524)</li><ul>|
 |Komay|<ul><li>[Set up blueprints for the API and home of our website (worked on it with Chris)](https://github.com/zenxha/kpop/projects/1#card-57459631)</li><ul>|

@@ -14,8 +14,6 @@ Group Project for tri3!
 - Devam Shrivastava ID: #51984972
 - Eshaan Parlikar ID: #32022538
 
-### Technicals
-
 ### Assigned Tickets Progress (Overall progress linked [here](https://github.com/zenxha/kpop/projects/1))
 
 |Member|Tickets|
@@ -27,6 +25,8 @@ Group Project for tri3!
 |Charlie|<ul><li>[Working on About Us Page](https://github.com/zenxha/kpop/projects/1#card-57725152)</li><ul>|
 
 
-## Our Idea
-- We aim for a simple and clean site that contains everything about sushi. On the site you’ll be able to upload images of sushi and review sushi and give your opinon on each sushi you eat.
-
+## Our Idea Including Support for Individuals (Routes, Blueprints etc.)
+- We aim for a simple and clean site that contains everything about kpop and music in general. On the site you’ll be able to upload your favorite songs, and explore other people's musical interests.
+- The site will contain blueprints and seperate routes that will directly lead to each of our individual work.
+- Here is one such example:
+![image](https://user-images.githubusercontent.com/72889453/112710377-dfb26a00-8e7d-11eb-8df4-5c0594f5edeb.png)

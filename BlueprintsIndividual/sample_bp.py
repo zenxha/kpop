@@ -1,21 +1,21 @@
 from flask import Blueprint
 from flask import render_template, request, redirect, url_for, session, flash, Flask, Response, Blueprint
-bp = Blueprint('bp', __name__)
-bp2 = Blueprint('bp2', __name__)
+kpop = Blueprint('kpop', __name__)
+jpop = Blueprint('jpop', __name__)
 
-@bp.route('/')
+@kpop.route('/')
 def index():
     return "I love K-Pop!"
 
-@bp.route('/base')
+@kpop.route('/base')
 def purpose():
     return render_template("base2.html")
 
-@bp2.route('/')
+@jpop.route('/')
 def index2():
     return "I love J-Pop!"
 
-@bp2.route('/base')
+@jpop.route('/base')
 def purpose2():
     return render_template("base2.html")
 

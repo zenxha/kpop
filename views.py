@@ -8,8 +8,7 @@ from flask import render_template, request, redirect, url_for, session, Flask, R
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
-from BlueprintsIndividual.sample_bp import bp
-from BlueprintsIndividual.sample_bp import bp2
+from BlueprintsIndividual.sample_bp import kpop, jpop
 from BlueprintsIndividual.api_view import api
 from BlueprintsIndividual.charlie import cz
 #from db import db_init, db
@@ -19,8 +18,8 @@ with open('config.json') as file:
 
 
 app = Flask(__name__)
-app.register_blueprint(bp, url_prefix="/kpop")
-app.register_blueprint(bp2, url_prefix="/jpop")
+app.register_blueprint(kpop, url_prefix="/kpop")
+app.register_blueprint(jpop, url_prefix="/jpop")
 app.register_blueprint(api)
 app.register_blueprint(cz)
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/

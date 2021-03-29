@@ -123,7 +123,7 @@ def login_post():
         user = User.query.filter_by(username=name).first()
         if name == "mort":
             return render_template('easteregg/IAM.html')
-        if not user: return render_template('homesite/signup.html', error="Please sign up for an account first")
+        if not user: return render_template('signup.html', error="Please sign up for an account first")
         if user.password == password:
             session.pop('user', None)
             session['user'] = user.username
@@ -164,7 +164,7 @@ def signup():
             db.session.commit()
 
             return redirect(url_for("login_post"))
-    return render_template('homesite/signup.html', background = random.choice(backgrounds))
+    return render_template('signup.html', background = random.choice(backgrounds))
 
 
 @app.route('/logout')

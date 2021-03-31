@@ -1,3 +1,5 @@
+
+# Komay's API blueprint
 from flask import Blueprint, render_template, jsonify
 import json
 with open('config.json') as file:

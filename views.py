@@ -12,6 +12,7 @@ from BlueprintsIndividual.sample_bp import kpop, jpop
 from BlueprintsIndividual.api_view import api
 from BlueprintsIndividual.charlie import cz
 from BlueprintsIndividual.komay import ks
+from BlueprintsIndividual.chris import cr
 #from db import db_init, db
 #from model import Review, User
 with open('config.json') as file:
@@ -24,6 +25,7 @@ app.register_blueprint(jpop, url_prefix="/jpop")
 app.register_blueprint(api)
 app.register_blueprint(cz)
 app.register_blueprint(ks)
+app.register_blueprint(cr)
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

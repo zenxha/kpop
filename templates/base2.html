@@ -10,7 +10,9 @@
             <li><a href="/">Home</a></li>
            <!-- <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
             <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li> -->
-            <li><a href="{{ url_for('ks.getsong')}}">Komay Minilab</a></li>
+            <li><a href="{{url_for('ks.getsong')}}">Komay Minilab</a></li>
+            <li><a href="{{url_for('cr.index')}}">Chris Minilab</a></li>
+
 
         </ul>
     </nav>
@@ -43,6 +45,10 @@
     html {
         height: 100%;
         background-color: unset;
+    }
+
+    a:hover{
+        color:whitesmoke;
     }
 
     ul,

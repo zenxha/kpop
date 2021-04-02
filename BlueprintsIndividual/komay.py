@@ -14,5 +14,5 @@ def getsong():
         artist = request.form.get('artist')
         song = request.form.get('song')
         return render_template('getsongs.html', song = Song(artist, song))
-    print(Song('official hige dandism', 'pretender').get_similar()['similartracks'])
+
     return render_template('getsongs.html', background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", song = Song('Official+HIGE+DANdism', "pretender"))

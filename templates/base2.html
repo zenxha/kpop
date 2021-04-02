@@ -8,14 +8,13 @@
         <ul>
             <!-- <audio source src="unravel.mp3" type="audio/mpeg"  controls autoplay></audio> -->
             <li><a href="/">Home</a></li>
-            <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
-            <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li>
-            <li><a href="{{ url_for('ks.getsong')}}">Get Similar Tracks</a></li>
-
-
+           <!-- <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
+            <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li> -->
+            <li><a href="{{ url_for('ks.getsong')}}">Komay Minilab</a></li>
 
         </ul>
     </nav>
+
     {% block title %} {% endblock %}
     {% block body %} {% endblock %}
     {% block content %} {% endblock %}

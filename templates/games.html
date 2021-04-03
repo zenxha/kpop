@@ -7,13 +7,16 @@
 <body>
 
 {% block body %}
-{% for game in gamelist.getgames() %}
+{% for game in gamelist %}
 <div class="row">
     <div class="column">
         <div class="card">
-            <h5 class="card-title">{{game['title']}}</h5>
-            <p class="card-text">{{game['releasedate']}}</p>
-            <p class="card-text">{{game['randomfact']}}</p>
+            <h5 class="card-title">{{game.gettitle()}}</h5>
+            <p class="card-text">{{game.getreleasedate()}}</p>
+            {% if game.getrandomfact() %}
+                <p class="card-text">{{ game.getrandomfact() }}</p>
+            {% endif %}
+            <p class="card-text">{{ game.calculateage() }}</p>
         </div>
     </div>
 </div>

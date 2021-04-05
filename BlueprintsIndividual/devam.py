@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, jsonify, request
 import json
-from classes.class_test import Video
+from classes.class_test import Video, Song
 
 ds = Blueprint('ds', __name__, url_prefix='/devam', static_folder="static", template_folder="templates")
 

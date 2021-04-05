@@ -18,7 +18,7 @@ def index():
         },
         {
             "title": "505 by Arctic Monkeys",
-            "link": "https://www.youtube.com/embed/My2FRPA3Gf8",
+            "link": "https://www.youtube.com/embed/MrmPDUvKyLs",
             "description": "An oldie but goodie, it's very much a vibe of walking downtown during midnight."
         },
         {

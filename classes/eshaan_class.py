@@ -17,7 +17,7 @@ class top_5:
                 },
                 {
                     "title": "505 by Arctic Monkeys",
-                    "link": "https://www.youtube.com/embed/My2FRPA3Gf8",
+                    "link": "https://www.youtube.com/embed/MrmPDUvKyLs",
                 },
                 {
                     "title": "More Than A Woman by The Bee Gees",

@@ -2,9 +2,9 @@ import requests
 import json
 import os
 
-#import google_auth_oauthlib.flow
-#import googleapiclient.discovery
-#import googleapiclient.errors
+import google_auth_oauthlib.flow
+import googleapiclient.discovery
+import googleapiclient.errors
 
 # http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=official+hige+dandism&track=pretender&api_key=630846faaf3ca8d5cf4d712e56bd4989&format=json
 class Song:
@@ -25,7 +25,7 @@ class Video:
         self._vidname = vidname
     scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
-    def main():
+    def main(self):
         # Disable OAuthlib's HTTPS verification when running locally.
         # *DO NOT* leave this option enabled in production.
         os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"

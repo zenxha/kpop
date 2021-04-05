@@ -1,6 +1,5 @@
 import random
 
-
 class song:
     def __init__(self, songs):
         if len(songs) < 0:

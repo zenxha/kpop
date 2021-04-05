@@ -13,6 +13,7 @@ from BlueprintsIndividual.api_view import api
 from BlueprintsIndividual.charlie import cz
 from BlueprintsIndividual.komay import ks
 from BlueprintsIndividual.chris import cr
+from BlueprintsIndividual.devam import ds
 from BlueprintsIndividual.eshaan import ep
 #from db import db_init, db
 #from model import Review, User
@@ -27,6 +28,7 @@ app.register_blueprint(api)
 app.register_blueprint(cz)
 app.register_blueprint(ks)
 app.register_blueprint(cr)
+app.register_blueprint(ds)
 app.register_blueprint(ep)
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'

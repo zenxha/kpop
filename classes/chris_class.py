@@ -2,7 +2,6 @@ import random
 
 class song:
     def __init__(self, songs):
-        self._list = []
         if len(songs) < 0:
             raise ValueError("Songs must be greater than 0")
         self._songs = songs
@@ -24,11 +23,6 @@ class song:
                                 "link": "https://www.youtube.com/embed/Cwkej79U3ek",
                             }]
 
-    @property
-    def list(self):
-        return self._songs
-
-
     def songshuffle(self):
         random.shuffle(self._songs)
         return self._songs
@@ -43,7 +37,7 @@ class BubbleSort:
         self.input_list = input_list
 
 
-        # init the outpu
+        # init the output
         self._output_list = []
 
         # init the functions

@@ -1,11 +1,7 @@
 import random
 
 class song:
-    def __init__(self, songs):
-        if len(songs) < 0:
-            raise ValueError("Songs must be greater than 0")
-        self._songs = songs
-        if not songs:
+    def __init__(self):
             self._songs = [{
                                 "title": "Party Rock Anthem",
                                 "link": "https://www.youtube.com/embed/KQ6zr6kCPj8",

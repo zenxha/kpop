@@ -10,29 +10,46 @@
 <div class="container">
 
 <h1>Get similar tracks</h1>
-<form  method="post">
-  <div class="form-group">
-    <label for="artist">Artist</label>
-    <input required type="text" class="form-control" id="artist" name='artist' aria-describedby="emailHelp" placeholder="Official HIGE DANdism">
-    <small id="emailHelp" class="form-text text-muted">Insert the artist</small>
-  </div>
-  <div class="form-group">
-    <label for="song">Song name</label>
-    <input required type="text" class="form-control" id="song" name='song' placeholder="Pretender">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <div class="col-md-5">
+    <form  method="post">
+      <div class="form-group">
+        <label for="artist">Artist</label>
+        <input required type="text" class="form-control" id="artist" name='artist' aria-describedby="emailHelp" placeholder="Queen">
+        <small id="emailHelp" class="form-text">Insert the artist</small>
+      </div>
+      <div class="form-group">
+
+        <label for="song">Song name</label>
+        <input required type="text" class="form-control" id="song" name='song' placeholder="Bohemian Rhapsody">
+      </div>
+        <label>Sort By</label>
+        <div class="form-check">
+      <input class="form-check-input" type="radio" value="playcount" name="sorttype" id="flexRadioDefault1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Play count
+      </label>
+
+    </div>
+
+        <div class="form-check">
+      <input required class="form-check-input" type="radio" value="similarity" name="sorttype" id="similarity">
+      <label class="form-check-label" for="similarity">
+        Similarity Percentage
+      </label>
+        </div>
+        <div class="form-check">
+      <input class="form-check-input" type="radio" value="alphabetical" name="sorttype" id="alphabetical">
+      <label class="form-check-label" for="alphabetical">
+        Alphabetical Order
+      </label>
+        </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 
 
-    {% if song.get_similar()['error'] %}
-    <h1>Please insert a valid song</h1>
-
-    {% else %}
-    {% for item in song.get_similar()['similartracks']['track'] %}
+<div class="col-md-5">
+    {% for item in song.get_similar() %}
     <div class="card-deck">
 <div class="card" style="width: 18rem;">
   <div class="card-body">
@@ -45,7 +62,7 @@
 </div>
         </div>
         {% endfor %}
-{% endif %}
+</div>
 </div>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

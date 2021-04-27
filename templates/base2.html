@@ -1,5 +1,14 @@
 <!DOCTYPE HTML>
 <header>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="icon" href="../static/pixel_art_pizza_by_chinyiun_de3ewdq-fullview.gif">
+    </head>
     <title>Kpop</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <nav style="position: relative">
@@ -11,7 +20,8 @@
            <!-- <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
             <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li> -->
             <li><a href="{{url_for('ks.getsong')}}">Komay Minilab</a></li>
-            <li><a href="{{url_for('cr.index')}}">Chris Minilab</a></li>
+            <li><a href="{{url_for('cr.shuffle')}}">Chris Shuffle Minilab</a></li>
+            <li><a href="{{url_for('cr.bubbleSort')}}">Chris Bubble Sort Minilab</a></li>
             <li><a href="{{url_for('cz.index')}}">Charlie Minilab</a></li>
             <li><a href="{{url_for('ep.index')}}">Eshaan Minilab</a></li>
             <li><a href="{{url_for('ds.index')}}">Devam Minilab</a></li>

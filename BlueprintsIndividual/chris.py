@@ -4,9 +4,9 @@ from classes.chris_class import song, BubbleSort
 
 cr = Blueprint('cr', __name__, url_prefix="/cr", static_folder="static", template_folder="templates")
 
-@cr.route('/')
-@cr.route('/home')
-def index():
+
+@cr.route('/shuffle')
+def shuffle():
     return render_template('shuffle.html', song=song())
 
 

@@ -17,20 +17,21 @@ def bubbleSort():
     if request.form:
         string = request.form.get("string")
         arr = string.split()
-        original = string.split()
-        if(request.form["select"] == "integer"):
+        input = string.split()
+        if(request.form["select"] == "string"):
+            try:
+                isString = True
+                return render_template("crbubblesort.html",ordered_list = BubbleSort(arr,isString).OutputList,input_list = input)
+            except ValueError:
+                return render_template("crbubblesort.html",ordered_list = "Can Only Contain A String",input_list = "Error")
+        else:
             try:
                 for j in range (0,len(arr)):
                     arr[j] = int(arr[j])
-                for j in range (0,len(original)):
-                    original[j] = int(original[j])
-                return render_template("crbubblesort.html",output_list = BubbleSort(arr,isString).OuputList,original_list = original)
+                for j in range (0,len(input)):
+                    input[j] = int(input[j])
+                return render_template("crbubblesort.html",ordered_list = BubbleSort(arr,isString).OutputList,input_list = input)
             except ValueError:
-                return render_template("crbubblesort.html",output_list = "Can Only Contain String or Integer",original_list = "Error")
-        else:
-            try:
-                isString = True
-                return render_template("crbubblesort.html",output_list = BubbleSort(arr,isString).OuputList,original_list = original)
-            except ValueError:
-                return render_template("crbubblesort.html",output_list = "Can Only Contain String or Integer",original_list = "Error")
-    return render_template("crbubblesort.html",output_list = BubbleSort(arr,isString).OuputList,original_list = arr)
+                return render_template("crbubblesort.html",ordered_list = "Can Only Contain An Integer",input_list = "Error")
+
+    return render_template("crbubblesort.html",ordered_list = BubbleSort(arr,isString).OutputList,input_list = arr)

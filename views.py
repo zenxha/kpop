@@ -8,7 +8,7 @@ from flask import render_template, request, redirect, url_for, session, Flask, R
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
-from BlueprintsIndividual.sample_bp import kpop, jpop
+
 from BlueprintsIndividual.api_view import api
 from BlueprintsIndividual.charlie import cz
 from BlueprintsIndividual.komay import ks
@@ -26,7 +26,7 @@ app.register_blueprint(kpop, url_prefix="/kpop")
 app.register_blueprint(jpop, url_prefix="/jpop")
 app.register_blueprint(api)
 app.register_blueprint(cz)
-app.register_blueprint(ks)
+app.register_blueprint(ks, url_prefix="/komay")
 app.register_blueprint(cr)
 app.register_blueprint(ds)
 app.register_blueprint(ep)

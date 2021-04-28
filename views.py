@@ -22,8 +22,7 @@ with open('config.json') as file:
 
 
 app = Flask(__name__)
-app.register_blueprint(kpop, url_prefix="/kpop")
-app.register_blueprint(jpop, url_prefix="/jpop")
+
 app.register_blueprint(api)
 app.register_blueprint(cz)
 app.register_blueprint(ks, url_prefix="/komay")

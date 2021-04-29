@@ -25,7 +25,6 @@ class song:
 
 
 
-
 class BubbleSort:
     def __init__(self, input_list,isString):
         self.input_list = input_list
@@ -35,7 +34,6 @@ class BubbleSort:
 
     def bubblesort(self, inarr):
         n = len(inarr)
-
         for i in range(n):
             for j in range(0, n-i-1):
                 if inarr[j] > inarr[j+1] :

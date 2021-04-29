@@ -17,7 +17,7 @@
         <ul>
             <!-- <audio source src="unravel.mp3" type="audio/mpeg"  controls autoplay></audio> -->
             <li><a href="/">Home</a></li>
-            <div class="dropdown" style="padding-top:1.25%;">
+            <div class="dropdown" style="padding-top:3.5%;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     First minilab
                 </button>
@@ -29,7 +29,7 @@
                     <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
                 </div>
             </div>
-            <div class="dropdown" style="padding-top:1.25%;">
+            <div class="dropdown" style="padding-top:3.5%;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     BubbleSort Minilab
                 </button>
@@ -190,6 +190,20 @@
             text-align: center;
             flex-direction: column;
         }
+    }
+
+    .dropdown:hover > .dropdown-menu{
+        display: block;
+    }
+    .dropdown > .dropdown-toggle:active{
+        pointer-events: none;
+    }
+
+    .btn-secondary,
+    .btn-secondary:hover,
+    .btn-secondary:active{
+        background-color: transparent;
+        border-color: transparent;
     }
     {% block style %}
     {% endblock %}

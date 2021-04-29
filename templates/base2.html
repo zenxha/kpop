@@ -17,18 +17,36 @@
         <ul>
             <!-- <audio source src="unravel.mp3" type="audio/mpeg"  controls autoplay></audio> -->
             <li><a href="/">Home</a></li>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    First minilab
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('cr.shuffle')}}">Chris's Shuffle Minilab</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    BubbleSort Minilab
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#"></a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('cr.bubbleSort')}}">Chris's Bubble Sort</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+
+                </div>
+            </div>
            <!-- <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
             <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li> -->
             <li><a href="{{url_for('ks.getsong')}}">Komay Minilab</a></li>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Chris's Minilabs
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{url_for('cr.shuffle')}}">Shuffle existing songs</a>
-                    <a class="dropdown-item" href="{{url_for('cr.bubbleSort')}}">Bubble Sort</a>
-                </div>
-            </div>
             <li><a href="{{url_for('cz.index')}}">Charlie Minilab</a></li>
             <li><a href="{{url_for('ep.index')}}">Eshaan Minilab</a></li>
             <li><a href="{{url_for('ds.index')}}">Devam Minilab</a></li>

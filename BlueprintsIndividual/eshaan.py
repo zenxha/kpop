@@ -1,5 +1,5 @@
-from flask import Blueprint, Flask, render_template, json
-from classes.eshaan_class import top_5
+from flask import Blueprint, Flask, render_template, jsonify, request
+from classes.eshaan_class import top_5, EshaanBubbleSort
 
 ep = Blueprint('ep', __name__, url_prefix="/eshaan", static_folder="static", template_folder="templates")
 
@@ -32,3 +32,29 @@ def index():
             "description": "If you don't know this classic, then you are missing out!"
         }]
     return render_template('recommend.html', track=top_5(tracks), trackarray=tracks)
+
+@ep.route('/bubble', methods = ["GET", "POST"])
+def bubbleSort():
+    inarr = []
+    isString = False
+    if request.form:
+        string = request.form.get("string")
+        inarr = string.split()
+        input = string.split()
+        if(request.form["select"] == "string"):
+            try:
+                isString = True
+                return render_template("crbubblesort.html",sorted_list = EshaanBubbleSort(inarr,isString).OutputList,input_list = input)
+            except ValueError:
+                return render_template("crbubblesort.html",sorted_list = "Can Only Contain A String",input_list = "Error")
+        else:
+            try:
+                for j in range (0,len(inarr)):
+                    inarr[j] = int(inarr[j])
+                for j in range (0,len(input)):
+                    input[j] = int(input[j])
+                return render_template("crbubblesort.html",sorted_list = EshaanBubbleSort(inarr,isString).OutputList,input_list = input)
+            except ValueError:
+                return render_template("crbubblesort.html",sorted_list = "Can Only Contain An Integer",input_list = "Error")
+
+    return render_template("crbubblesort.html",sorted_list = EshaanBubbleSort(inarr,isString).OutputList,input_list = inarr)

@@ -17,40 +17,33 @@
         <ul>
             <!-- <audio source src="unravel.mp3" type="audio/mpeg"  controls autoplay></audio> -->
             <li><a href="/">Home</a></li>
-            <div class="dropdown">
+            <div class="dropdown" style="padding-top:3.5%;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     First minilab
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('cr.shuffle')}}">Chris's Shuffle Minilab</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('cz.index')}}">Charlie's Video Game Info Minilab</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('ks.shuffle')}}">Komay's minilab</a>
                     <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
                     <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
-                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
-                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
-
                 </div>
             </div>
-            <div class="dropdown">
+            <div class="dropdown" style="padding-top:3.5%;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     BubbleSort Minilab
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="btn btn-secondary btn-sm dropdown-item" href="#"></a>
                     <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('cr.bubbleSort')}}">Chris's Bubble Sort</a>
-                    <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('ks.getsong')}}">Komay's Bubble Sort</a>
-                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
-                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
-                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
-
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('ds.bubbleSort')}}">Devam's Bubble Sort</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('cz.bubbleSort')}}">Charlie's Bubble Sort</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('ep.bubbleSort')}}">Eshaan's Bubble Sort</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('ks.getSong')}}">Komay Bubble Sort</a>
                 </div>
             </div>
-           <!-- <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
-            <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li> -->
-
-            <li><a href="{{url_for('cz.index')}}">Charlie Minilab</a></li>
-            <li><a href="{{url_for('ep.index')}}">Eshaan Minilab</a></li>
-            <li><a href="{{url_for('ds.index')}}">Devam Minilab</a></li>
-
+            <!-- <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
+             <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li> -->
         </ul>
     </nav>
 
@@ -197,6 +190,24 @@
             text-align: center;
             flex-direction: column;
         }
+    }
+
+    .dropdown:hover > .dropdown-menu{
+        display: block;
+    }
+    .dropdown > .dropdown-toggle:active{
+        pointer-events: none;
+    }
+
+    .btn-secondary,
+    .btn-secondary:hover,
+    .btn-secondary:active{
+        background-color: transparent;
+        border-color: transparent;
+    }
+
+    .dropdown-menu{
+        top:80%;
     }
     {% block style %}
     {% endblock %}

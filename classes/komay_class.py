@@ -38,8 +38,6 @@ class Song:
             if self._sorttype == 'similarity':
                 res_array = res_array
                 print(self._sorttype)
-            print(res_array)
-            print('a')
             return res_array
         return []
 

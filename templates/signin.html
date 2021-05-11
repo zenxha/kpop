@@ -1,0 +1,450 @@
+{% block pagecontent %}
+
+<!--
+ using get method so that the students can see the data being submitted by the form when successful.
+ using JS to add novalidate into the form attribute so that we can use HTML5 validation as a fallback if someone is not allowing JS on their page.
+-->
+<style>
+    {% include '/users/formStyles.html' %}
+</style>
+<div class="container">
+    <div class="pt-5 text-white">
+        <header class="py-5 mt-5">
+            <h1 class="display-4"></h1>
+        </header>
+    </div>
+    <form action="/login/" method="POST" id="sign-up">
+        <h1>Login</h1>
+        <fieldset>
+            <!-- made these fields required -->
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+
+
+            <!-- same for minlength and maxlength: minlength="8" maxlength="20" we're using JS to do this.-->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" >
+            <p class="show">show password</p>
+            <p>Don't have an account? Sign up <a href="/signup">here</a></p>
+        </fieldset>
+
+        <div class="error">
+            <!-- if the user does not fill out the required elements or has something wrong we can tell the user with this information.-->
+        </div>
+
+        <button type="submit">Log In</button>
+
+
+    </form>
+
+
+    <!-- partial:index.partial.html -->
+    <div class="wrap">
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z" stroke-width="7" fill="none"/>
+        </svg>
+
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z" stroke-width="7" fill="none"/>
+        </svg>
+
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z" stroke-width="7" fill="none"/>
+        </svg>
+
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z" stroke-width="7" fill="none"/>
+        </svg>
+
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z" stroke-width="7" fill="none"/>
+        </svg>
+
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z" stroke-width="7" fill="none"/>
+        </svg>
+
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z" stroke-width="7" fill="none"/>
+        </svg>
+
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z" stroke-width="7" fill="none"/>
+        </svg>
+
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z" stroke-width="7" fill="none"/>
+        </svg>
+    </div>
+
+
+</div>
+
+<!-- Note: this javascript checks the user input and makes sure that it's good -->
+<script type="text/javascript">
+    'use strict'; //ensures we are using the most modern JS interpreter available to the browser. And keeps us on our toes for best practices.
+
+    //variables at the top ensure the whole program has access to them.
+    const pass = document.querySelector('#password');
+    const show = document.querySelector('p.show');
+    const form = document.querySelector('#sign-up');
+    const errorDiv = document.querySelector('.error');
+    const username = document.querySelector('#username');
+    form.setAttribute('novalidate', 'novalidate');
+
+
+    /* #1 problem for people is passwords */
+    //event listener for a password viewing toggle.
+    show.addEventListener('click', function(){
+        //the keyword: this is the item that was clicked. this can be used in other context and can be tricky. Use with care.
+
+        let text = this.textContent; //gets the current text value of the show element
+        //compares the value of the text
+        if(text === 'show password'){
+            this.textContent = 'hide password'; //sets the value of the text
+            pass.setAttribute('type', 'text'); //sets the type of input the password input box is.
+        }else{
+            this.textContent = 'show password';
+            pass.setAttribute('type', 'password');
+        }
+
+    })
+
+    //form validation:
+    //this event listener is attached to the form and listens for the submit event
+    form.addEventListener('submit', function(event){
+        //the event parameter/variable works like a local variable to capture the event object, which has lots of information about the event that occured. By having access to the event obect we can access its properties and methods.
+        let errors = []; //this is an empty array. it is here to store any error messages we need to output to the page to let the user know he needs to fix.
+        let usernameVal = username.value.trim();
+        let passVal = password.value.trim(); //trim clears whitespace on both sides of entry. " password " becomes "password"
+        //once these have been trimmed reinsert these values into the value attribute:
+        username.value = usernameVal;
+        pass.value = passVal;
+
+
+        if(usernameVal === '' || usernameVal == null){
+            errors.push('Cannot have blank username')
+        }
+
+
+
+        if(errors.length > 0){
+            //this means we have at least one error message. So we need to prevent the form from submitting.
+            event.preventDefault(); //this is a method that prevents the event's typical behavior. So in this case we are preventing the page from submitting like it normally would.
+            //now we want to let the user know that they need to fill out stuff before they resubmit.
+            //populate the errorDiv with the content we want:
+            errorDiv.innerHTML = errors.join('<br>');
+
+        }
+
+    })
+
+    /*
+        function to check if an item within a set of elements have a checked property
+        @parm: set - an array or array like set of elements
+        @return - true or false based on if at least one set of elements has the checked property.
+    */
+
+    function isChecked(set){
+        let check = false;
+        for(var i = 0; i < set.length; i++){
+            if(set[i].checked === true && check === false){
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
+</script>
+
+
+
+<style>
+    form {
+        max-width: 300px;
+        margin: 10px auto;
+        padding: 10px 20px;
+        background: #f4f7f8;
+        border-radius: 8px;
+    }
+
+
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="datetime"],
+    input[type="email"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="url"],
+    textarea,
+    select {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        font-size: 16px;
+        height: auto;
+        margin: 0;
+        outline: 0;
+        padding: 15px;
+        width: 100%;
+        background-color: #e8eeef;
+        color: #8a97a0;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+        margin-bottom: 30px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin: 0 4px 8px 0;
+    }
+
+    select {
+        padding: 6px;
+        height: 32px;
+        border-radius: 2px;
+    }
+
+    button {
+        padding: 19px 39px 18px 39px;
+        color: #FFF;
+        background-color: #E61F93;
+        font-size: 18px;
+        text-align: center;
+        font-style: normal;
+        border-radius: 5px;
+        width: 100%;
+        border: 1px solid #E61F93;
+        border-width: 1px 1px 3px;
+        box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+        margin-bottom: 10px;
+    }
+
+    fieldset {
+        margin-bottom: 30px;
+        border: none;
+    }
+
+    legend {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    label.light {
+        font-weight: 300;
+        display: inline;
+    }
+
+    #password{
+        margin-bottom: 5px;
+    }
+    p.show{
+        margin: 0 auto 1.8em;
+        font-style: italic;
+        cursor: pointer;
+
+    }
+
+    .number {
+        background-color: #E61F93;
+        color: #fff;
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        font-size: 0.8em;
+        margin-right: 4px;
+        line-height: 30px;
+        text-align: center;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+        border-radius: 100%;
+    }
+
+    @media screen and (min-width: 480px) {
+        form {
+            max-width: 780px;
+        }
+    }
+
+    @import 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900i';
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        text-rendering: optimizeLegibility;
+        font-smooth: always;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: white;
+        overflow: hidden;
+    }
+
+    .wrap {
+        perspective-origin: 50% 50%;
+    }
+
+    .page {
+        margin: 3%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 30px;
+        border-radius: 3px;
+        text-align: center;
+        font-size: 1.4vw;
+    }
+    .page h2 {
+        font-weight: bold;
+        font-size: 6.5vw;
+        font-weight: 900;
+        font-style: italic;
+        color: #dad8ec;
+    }
+
+    .svg {
+        stroke: #E61F93;
+        position: absolute;
+        bottom: -100vh;
+        transform-style: preserve-3d;
+    }
+
+
+    @-webkit-keyframes raise1 {
+        to {
+            bottom: 150vh;
+            transform: scale(-0.3) rotate(310deg);
+        }
+    }
+    @keyframes raise1 {
+        to {
+            bottom: 150vh;
+            transform: scale(-0.3) rotate(310deg);
+        }
+    }
+
+    @-webkit-keyframes raise2 {
+        to {
+            bottom: 150vh;
+            transform: scale(0) rotate(1deg);
+        }
+    }
+    @keyframes raise2 {
+        to {
+            bottom: 150vh;
+            transform: scale(0) rotate(1deg);
+        }
+    }
+
+
+    @-webkit-keyframes raise3 {
+        to {
+            bottom: 150vh;
+            transform: scale(0.3) rotate(357deg);
+        }
+    }
+    @keyframes raise3 {
+        to {
+            bottom: 150vh;
+            transform: scale(0.3) rotate(357deg);
+        }
+    }
+    @-webkit-keyframes raise4 {
+        to {
+            bottom: 150vh;
+            transform: scale(0.6) rotate(200deg);
+        }
+    }
+    @keyframes raise4 {
+        to {
+            bottom: 150vh;
+            transform: scale(0.6) rotate(200deg);
+        }
+    }
+
+
+    @-webkit-keyframes raise5 {
+        to {
+            bottom: 150vh;
+            transform: scale(0.9) rotate(26deg);
+        }
+    }
+    @keyframes raise5 {
+        to {
+            bottom: 150vh;
+            transform: scale(0.9) rotate(26deg);
+        }
+    }
+
+    @-webkit-keyframes raise6 {
+        to {
+            bottom: 150vh;
+            transform: scale(1.2) rotate(168deg);
+        }
+    }
+    @keyframes raise6 {
+        to {
+            bottom: 150vh;
+            transform: scale(1.2) rotate(168deg);
+        }
+    }
+
+    @-webkit-keyframes raise7 {
+        to {
+            bottom: 150vh;
+            transform: scale(1.5) rotate(127deg);
+        }
+    }
+    @keyframes raise7 {
+        to {
+            bottom: 150vh;
+            transform: scale(1.5) rotate(127deg);
+        }
+    }
+
+
+    @-webkit-keyframes raise8 {
+        to {
+            bottom: 150vh;
+            transform: scale(1.8) rotate(151deg);
+        }
+    }
+    @keyframes raise8 {
+        to {
+            bottom: 150vh;
+            transform: scale(1.8) rotate(151deg);
+        }
+    }
+    @-webkit-keyframes raise9 {
+        to {
+            bottom: 150vh;
+            transform: scale(2.1) rotate(170deg);
+        }
+    }
+    @keyframes raise9 {
+        to {
+            bottom: 150vh;
+            transform: scale(2.1) rotate(170deg);
+        }
+    }
+
+    @-webkit-keyframes raise10 {
+        to {
+            bottom: 150vh;
+            transform: scale(2.4) rotate(34deg);
+        }
+    }
+    @keyframes raise10 {
+        to {
+            bottom: 150vh;
+            transform: scale(2.4) rotate(34deg);
+        }
+    }
+</style>
+{% endblock %}

@@ -56,6 +56,10 @@ def index():
     background = random.choice(backgrounds)
     return render_template("base2.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", quote=quote, author = author)
 
+@app.route('/bootstrap')
+def bootstrap_sample():
+    return render_template("Bootstrap_login_example.html")
+
 
 """our own project dstufsuf as"""
 
@@ -179,13 +183,4 @@ def signup():
 def logout():
     session.pop('user')
     return redirect(url_for("index"))
-
-
-dict = {
-    'id': 23, 'username': 'gamer69',
-    'password': 'abcdef1234', 'premium member': True
-    }
-print("User Info")
-for key, value in dict.items():
-    print(f"{key}: {value}")
 

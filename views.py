@@ -26,7 +26,7 @@ app.register_blueprint(kpop, url_prefix="/kpop")
 app.register_blueprint(jpop, url_prefix="/jpop")
 app.register_blueprint(api)
 app.register_blueprint(cz)
-app.register_blueprint(ks, template_folder="templates/ks/")
+app.register_blueprint(ks)
 app.register_blueprint(cr)
 app.register_blueprint(ds)
 app.register_blueprint(ep)
@@ -40,7 +40,6 @@ db = SQLAlchemy()
 backgrounds = ["https://www.teahub.io/photos/full/193-1933361_laptop-aesthetic-wallpapers-anime.jpg"]
 
 pathForImages='./images/'
-@app.before_request
 def before_request():
     g.user = None
     if 'user' in session:
@@ -54,7 +53,7 @@ def index():
     quote = response.json()['content']
     author = response.json()['author']
     background = random.choice(backgrounds)
-    return render_template("base2.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", quote=quote, author = author)
+    return render_template("index.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", quote=quote, author = author)
 
 @app.route('/bootstrap')
 def bootstrap_sample():

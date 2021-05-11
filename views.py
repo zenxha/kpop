@@ -26,7 +26,7 @@ app.register_blueprint(kpop, url_prefix="/kpop")
 app.register_blueprint(jpop, url_prefix="/jpop")
 app.register_blueprint(api)
 app.register_blueprint(cz)
-app.register_blueprint(ks)
+app.register_blueprint(ks, template_folder="templates/ks/")
 app.register_blueprint(cr)
 app.register_blueprint(ds)
 app.register_blueprint(ep)
@@ -179,4 +179,13 @@ def signup():
 def logout():
     session.pop('user')
     return redirect(url_for("index"))
+
+
+dict = {
+    'id': 23, 'username': 'gamer69',
+    'password': 'abcdef1234', 'premium member': True
+    }
+print("User Info")
+for key, value in dict.items():
+    print(f"{key}: {value}")
 

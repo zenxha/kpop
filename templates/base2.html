@@ -17,6 +17,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/signin">Sign In</a></li>
             <li><a href="/signup">Sign Up</a></li>
+            <li><a href="{{url_for('bootstrap_sample')}}">P</a></li>
 
             <div class="dropdown" style="padding-top:3.5%;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,6 +79,15 @@
     html {
         height: 100%;
         background-color: unset;
+    }
+
+
+    button, input, optgroup, select, textarea {
+        margin-top: 10px;
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
     }
 
     a:hover{

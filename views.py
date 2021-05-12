@@ -179,12 +179,3 @@ def logout():
     session.pop('user')
     return redirect(url_for("index"))
 
-
-dict = {
-    'id': 23, 'username': 'gamer69',
-    'password': 'abcdef1234', 'premium member': True
-    }
-print("User Info")
-for key, value in dict.items():
-    print(f"{key}: {value}")
-

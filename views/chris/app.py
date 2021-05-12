@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
-from Chris.chris_class import song, BubbleSort
+from views.algo.songshuffle import song
+from views.algo.bubblesort import BubbleSort
 
 
 chris_bp = Blueprint('chris_bp', __name__, template_folder='templates', static_folder='static', static_url_path='assets')

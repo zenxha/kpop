@@ -12,7 +12,7 @@ from BlueprintsIndividual.sample_bp import kpop, jpop
 from BlueprintsIndividual.api_view import api
 from BlueprintsIndividual.charlie import cz
 from BlueprintsIndividual.komay import ks
-from views.chris.main import chris_bp
+from views.chris.app import chris_bp
 from BlueprintsIndividual.devam import ds
 from BlueprintsIndividual.eshaan import ep
 #from db import db_init, db

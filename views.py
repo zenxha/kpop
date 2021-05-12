@@ -55,15 +55,22 @@ def index():
     background = random.choice(backgrounds)
     return render_template("index.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", quote=quote, author = author)
 
+@app.route('/bootstrap')
+def bootstrap():
+    return render_template('homesite/Bootstrap_login_example.html')
+
 
 """our own project dstufsuf as"""
 
 @app.route('/project')
 def project():
     return render_template("homesite/project.html", background=random.choice(backgrounds))
+
+
 @app.route('/easteregg')
 def easteregg():
     return render_template("easteregg/base.html", background="https://i.pinimg.com/originals/b8/e2/70/b8e270b7237f2f4c3a5905e6a3ca5f63.png")
+
 
 @app.route('/browse')
 def browse():
@@ -84,9 +91,11 @@ def browse():
         reviews.append(review_dict)
     return render_template("homesite/browse.html", reviews=reviews, background=random.choice(backgrounds))
 
+
 @app.route('/easteregg/crossover')
 def crossover():
     return render_template("easteregg/crossover.html")
+
 
 @app.route('/upload', methods=["POST", 'GET'])
 def upload():
@@ -110,6 +119,7 @@ def upload():
         return redirect(url_for("browse"))
     return render_template("homesite/loginv2.html", background=background)
 
+
 @app.route('/images/<int:id>')
 def get_img(id):
     img = Review.query.filter_by(id=id).first()
@@ -122,7 +132,7 @@ def get_img(id):
 "Login Section"
 
 
-@app.route('/login', methods=["POST", "GET"])
+@app.route('/signin', methods=["POST", "GET"])
 def login_post():
     if request.method == "POST":
         password = request.form.get('password')

@@ -59,7 +59,3 @@ def bubbleSort():
                 return render_template("czbubblesort.html",sorted_list = "Can Only Contain An Integer",input_list = "Error")
 
     return render_template("czbubblesort.html",sorted_list = CharlieBubbleSort(arr,isString).OutputList,input_list = arr)
-
-@cz.route('/calculator')
-def hello():
-        return render_template('calculator.html')

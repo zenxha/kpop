@@ -1,5 +1,12 @@
 {% block pagecontent %}
 
+<!--
+ using get method so that the students can see the data being submitted by the form when successful.
+ using JS to add novalidate into the form attribute so that we can use HTML5 validation as a fallback if someone is not allowing JS on their page.
+-->
+<style>
+    {% include '/users/formStyles.html' %}
+</style>
 <div class="container">
     <div class="pt-5 text-white">
         <header class="py-5 mt-5">
@@ -21,7 +28,9 @@
             <p>Don't have an account? Sign up <a href="/signup">here</a></p>
         </fieldset>
 
-        <div class="error"/>
+        <div class="error">
+            <!-- if the user does not fill out the required elements or has something wrong we can tell the user with this information.-->
+        </div>
 
         <button type="submit">Log In</button>
 

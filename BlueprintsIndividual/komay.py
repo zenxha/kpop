@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, jsonify, request
 import json
 from classes.komay_class import Song
 
-ks = Blueprint('ks', __name__ ,url_prefix='/ks', static_folder="static", template_folder="templates/ks/")
+ks = Blueprint('ks', __name__ , url_prefix='/ks', static_folder="static", template_folder="templates/ks/")
 
 @ks.route('/')
 def index():

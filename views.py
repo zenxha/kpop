@@ -57,7 +57,7 @@ def index():
 
 @app.route('/bootstrap')
 def bootstrap():
-    return render_template('homesite/Bootstrap_login_example.html')
+    return render_template('Bootstrap_login_example.html')
 
 
 """our own project dstufsuf as"""

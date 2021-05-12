@@ -1,6 +1,4 @@
-import random
-
-class BubbleSortDevam:
+class BubbleSort:
     def __init__(self, input_list,isString):
         self.input_list = input_list
         self._output_list = []
@@ -15,8 +13,8 @@ class BubbleSortDevam:
                     inarr[j], inarr[j+1] = inarr[j+1], inarr[j]
     def StringSort(self, inarr):
         string = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'j', 'K', 'L',
-                  'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W','X',
-                  'Y','Z']
+                 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W','X',
+                 'Y','Z']
         for j in range(0, len(inarr)):
             for i in range(0, len(inarr)):
                 _sorted = False

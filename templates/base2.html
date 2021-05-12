@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="icon" href="../static/pixel_art_pizza_by_chinyiun_de3ewdq-fullview.gif">
     </head>
     <title>Kpop</title>
@@ -17,7 +19,6 @@
             <li><a href="/">Home</a></li>
             <li><a href="/signin">Sign In</a></li>
             <li><a href="/signup">Sign Up</a></li>
-            <li><a href="{{url_for('bootstrap_sample')}}">P</a></li>
 
             <div class="dropdown" style="padding-top:3.5%;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,11 +39,20 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="btn btn-secondary btn-sm dropdown-item" href="#"></a>
                     <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('cr.bubbleSort')}}">Chris's Bubble Sort</a>
+<<<<<<< HEAD
                     <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('ds.bubbleSort')}}">Devam's Bubble Sort</a>
                     <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('cz.bubbleSort')}}">Charlie's Bubble Sort</a>
+<<<<<<< HEAD
                     <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('ep.bubbleSort')}}">Eshaan's Bubble Sort</a>
                     <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('ks.bubbleSort')}}">Komay Bubble Sort</a>
                     <a class="btn btn-secondary btn-sm dropdown-item" href="{{url_for('cz.hello')}}">Charlie and Eshaan Calculator</a>
+=======
+=======
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+>>>>>>> parent of 0a405cf... Devam bubble sort
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+                    <a class="btn btn-secondary btn-sm dropdown-item" href="#">Name of Minilab</a>
+>>>>>>> parent of 0c081e1... Very legitimate calculator
                 </div>
             </div>
             <!-- <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
@@ -79,15 +89,6 @@
     html {
         height: 100%;
         background-color: unset;
-    }
-
-
-    button, input, optgroup, select, textarea {
-        margin-top: 10px;
-        margin: 0;
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
     }
 
     a:hover{

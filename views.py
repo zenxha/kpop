@@ -12,7 +12,11 @@ from BlueprintsIndividual.sample_bp import kpop, jpop
 from BlueprintsIndividual.api_view import api
 from BlueprintsIndividual.charlie import cz
 from BlueprintsIndividual.komay import ks
+<<<<<<< HEAD
 from views.chris.app import chris_bp
+=======
+from BlueprintsIndividual.chris import cr
+>>>>>>> parent of d53da10... organize folders
 from BlueprintsIndividual.devam import ds
 from BlueprintsIndividual.eshaan import ep
 #from db import db_init, db
@@ -27,7 +31,7 @@ app.register_blueprint(jpop, url_prefix="/jpop")
 app.register_blueprint(api)
 app.register_blueprint(cz)
 app.register_blueprint(ks)
-app.register_blueprint(chris_bp, url_prefix='/cr')
+app.register_blueprint(cr)
 app.register_blueprint(ds)
 app.register_blueprint(ep)
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
@@ -54,10 +58,6 @@ def index():
     author = response.json()['author']
     background = random.choice(backgrounds)
     return render_template("index.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", quote=quote, author = author)
-
-@app.route('/bootstrap')
-def bootstrap_sample():
-    return render_template("Bootstrap_login_example.html")
 
 
 """our own project dstufsuf as"""
@@ -182,4 +182,13 @@ def signup():
 def logout():
     session.pop('user')
     return redirect(url_for("index"))
+
+
+dict = {
+    'id': 23, 'username': 'gamer69',
+    'password': 'abcdef1234', 'premium member': True
+    }
+print("User Info")
+for key, value in dict.items():
+    print(f"{key}: {value}")
 

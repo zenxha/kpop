@@ -5,7 +5,6 @@ with open('config.json') as file:
     config = json.load(file)
 
 
-
 if __name__ == "__main__":
     # runs the application on the repl development server
     app.secret_key = 'heyheyhey'

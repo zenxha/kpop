@@ -1,16 +1,22 @@
 from flask import Blueprint, render_template, request
-from classes.chris_class import song, BubbleSort
+from .algo.songshuffle import song
+from .algo.bubblesort import BubbleSort
 
 
-cr = Blueprint('cr', __name__, url_prefix="/cr", static_folder="static", template_folder="templates")
+chris_bp = Blueprint('chris_bp', __name__, template_folder='templates', static_folder='static', static_url_path='assets')
 
 
-@cr.route('/shuffle')
+@chris_bp.route('/')
+def index():
+    return render_template('chrishome.html')
+
+
+@chris_bp.route('/shuffle')
 def shuffle():
     return render_template('shuffle.html', song=song())
 
 
-@cr.route('/bubble', methods = ["GET","POST"])
+@chris_bp.route('/bubble', methods = ["GET","POST"])
 def bubbleSort():
     inarr = []
     isString = False

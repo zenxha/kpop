@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base2.html" %}
+{{ super() }}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Chris' Minilabs</title>
+</head>
+<body>
+<h1>Chris' Minilabs</h1>
+<a href="{{ url_for('chris.algo.songshuffle') }}">Python mini lab</a>
+<br>
+<a href="{{ url_for('chris.algo.bubblesort') }}">Bubble sort</a>
+<br>
+</body>
+{% endblock %}
+
+</html>

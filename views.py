@@ -3,6 +3,7 @@
 import random
 import requests
 import json
+import os
 from flask import g, jsonify
 from flask import render_template, request, redirect, url_for, session, Flask, Response
 
@@ -11,8 +12,9 @@ from werkzeug.utils import secure_filename
 from BlueprintsIndividual.sample_bp import kpop, jpop
 from BlueprintsIndividual.api_view import api
 from BlueprintsIndividual.charlie import cz
-from BlueprintsIndividual.komay import ks
+
 from view.chris.app import chris_bp
+from view.komay.app import ks
 from BlueprintsIndividual.devam import ds
 from BlueprintsIndividual.eshaan import ep
 #from db import db_init, db
@@ -53,7 +55,9 @@ def index():
     quote = response.json()['content']
     author = response.json()['author']
     background = random.choice(backgrounds)
-    return render_template("index.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", quote=quote, author = author)
+    images = os.listdir(os.path.join(app.static_folder, "images"))
+ 
+    return render_template("index.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", images=images)
 
 @app.route('/bootstrap')
 def bootstrap():

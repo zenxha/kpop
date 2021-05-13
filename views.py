@@ -11,7 +11,7 @@ from werkzeug.utils import secure_filename
 from BlueprintsIndividual.sample_bp import kpop, jpop
 from BlueprintsIndividual.api_view import api
 from BlueprintsIndividual.charlie import cz
-from BlueprintsIndividual.komay import ks
+from view.komay.app import ks
 from view.chris.app import chris_bp
 from BlueprintsIndividual.devam import ds
 from BlueprintsIndividual.eshaan import ep

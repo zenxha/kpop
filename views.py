@@ -15,8 +15,9 @@ from view.komay.app import ks
 from view.chris.app import chris_bp
 from BlueprintsIndividual.devam import ds
 from BlueprintsIndividual.eshaan import ep
-#from db import db_init, db
+from model import db_init, db
 #from model import Review, User
+from model import Playlist
 with open('config.json') as file:
     config = json.load(file)
 
@@ -33,7 +34,7 @@ app.register_blueprint(ep)
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#db_init(app)
+db_init(app)
 
 db = SQLAlchemy()
 
@@ -53,23 +54,13 @@ def index():
     quote = response.json()['content']
     author = response.json()['author']
     background = random.choice(backgrounds)
-    return render_template("index.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", quote=quote, author = author)
+    return render_template("base2.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", quote=quote, author = author)
 
 @app.route('/bootstrap')
 def bootstrap():
     return render_template('Bootstrap_login_example.html')
 
 
-"""our own project dstufsuf as"""
-
-@app.route('/project')
-def project():
-    return render_template("homesite/project.html", background=random.choice(backgrounds))
-
-
-@app.route('/easteregg')
-def easteregg():
-    return render_template("easteregg/base.html", background="https://i.pinimg.com/originals/b8/e2/70/b8e270b7237f2f4c3a5905e6a3ca5f63.png")
 
 
 @app.route('/browse')
@@ -97,14 +88,15 @@ def crossover():
     return render_template("easteregg/crossover.html")
 
 
-@app.route('/upload', methods=["POST", 'GET'])
-def upload():
+@app.route('/submit', methods=["POST", 'GET'])
+def submit():
     background = random.choice(backgrounds)
     if request.method == "POST":
-        name = request.form["username"]
-        satisfaction = request.form["satisfaction"]
-        content = request.form["content"]
-        image = request.files.get('img')
+        playlistname = request.form["playlistname"]
+        username = request.form["username"]
+        url = request.form["url"]
+        # image = request.files.get('img')
+        """
         if not image:
             return 'bad news ur image didnt make it to our servers :((((', 400
 
@@ -112,12 +104,13 @@ def upload():
         mimetype = image.mimetype
         if not filename or not mimetype:
             return 'Bad upload', 400
-
-        review = Review(username=name, content=content, img=image.read(), filename=filename, satisfaction=satisfaction,mimetype=mimetype)
-        db.session.add(review)
+        """
+        # review = Review(username=name, content=content, img=image.read(), filename=filename, satisfaction=satisfaction,mimetype=mimetype)
+        submit = Playlist(playlistname=playlistname, username=username, url=url)
+        db.session.add(submit)
         db.session.commit()
-        return redirect(url_for("browse"))
-    return render_template("homesite/loginv2.html", background=background)
+        
+    return render_template("index.html", background=background)
 
 
 @app.route('/images/<int:id>')

@@ -1,11 +1,17 @@
 """Views in MVC has responsibility for establishing routes and rendering HTML"""
-
+import os
 import random
 import requests
 import json
-from flask import g, jsonify
+from flask import g, jsonify, flash
 from flask import render_template, request, redirect, url_for, session, Flask, Response
-
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField , IntegerField
+from wtforms.validators import DataRequired, Email, EqualTo
+from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
+from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
+from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.urls import url_parse
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 from BlueprintsIndividual.sample_bp import kpop, jpop
@@ -21,7 +27,10 @@ with open('config.json') as file:
     config = json.load(file)
 
 
+basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
+login = LoginManager(app)
+login.login_view = 'login_route'
 app.register_blueprint(kpop, url_prefix="/kpop")
 app.register_blueprint(jpop, url_prefix="/jpop")
 app.register_blueprint(api)
@@ -31,12 +40,38 @@ app.register_blueprint(chris_bp, url_prefix='/cr')
 app.register_blueprint(ds)
 app.register_blueprint(ep)
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+dbURI = 'sqlite:///' + os.path.join(basedir, 'models/myDB.db')
+""" database setup to support db examples """
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#db_init(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = dbURI
+app.config['SECRET_KEY'] = "qwerty"
+db = SQLAlchemy(app)
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(255), unique=False, nullable=False)
+    last_name = db.Column(db.String(255), unique=False, nullable=False)
+    username = db.Column(db.String(255), unique=True, nullable=False)
+    email = db.Column(db.String(255), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128))
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
 
-db = SQLAlchemy()
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
+class RegisterForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    passwordconfirm = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo("password")])
+    firstname = StringField('First Name', validators=[DataRequired()])
+    lastname = StringField('Last Name', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Register')
+
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')
 backgrounds = ["https://www.teahub.io/photos/full/193-1933361_laptop-aesthetic-wallpapers-anime.jpg"]
 
 pathForImages='./images/'
@@ -96,7 +131,6 @@ def browse():
 def crossover():
     return render_template("easteregg/crossover.html")
 
-
 @app.route('/upload', methods=["POST", 'GET'])
 def upload():
     background = random.choice(backgrounds)
@@ -119,7 +153,6 @@ def upload():
         return redirect(url_for("browse"))
     return render_template("homesite/loginv2.html", background=background)
 
-
 @app.route('/images/<int:id>')
 def get_img(id):
     img = Review.query.filter_by(id=id).first()
@@ -133,22 +166,23 @@ def get_img(id):
 
 
 @app.route('/signin', methods=["POST", "GET"])
-def login_post():
-    if request.method == "POST":
-        password = request.form.get('password')
-        name = request.form.get("username")
-        user = User.query.filter_by(username=name).first()
-        if name == "mort":
-            return render_template('easteregg/IAM.html')
-        if not user: return render_template('signup.html', error="Please sign up for an account first")
-        if user.password == password:
-            session.pop('user', None)
-            session['user'] = user.username
-            return redirect(url_for('upload'))
-        else:
-            return render_template('homesite/login.html', error="Please check your credentials and try again", background = random.choice(backgrounds))
-
-    return render_template("homesite/login.html", background = random.choice(backgrounds))
+def login_route():
+    logform = LoginForm()
+    if logform.validate_on_submit():
+        user = User.query.filter_by(username=logform.username.data).first()
+        if user is None or not user.check_password(logform.password.data):
+            flash("Login Failed")
+            return redirect("/signin")
+        login_user(user)
+        flash("Login Successful!")
+        if logform.username.data == "secret":
+            return redirect("/secret")
+        nextpage = request.args.get("next")
+        if not nextpage or url_parse(nextpage).netloc != '':
+            return redirect('/')
+        return redirect(nextpage)
+    else:
+        return render_template("signin.html", form = logform)
 
 
 """
@@ -157,32 +191,42 @@ def profile(id):
     img = 2
     return render_template("homesite/profile.html", name=current_user.name)
 """
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
+@app.route('/newuser', methods=['GET', 'POST'])
+def new_user():
+    regform = RegisterForm()
+    """Register user"""
+    if regform.validate_on_submit():
+        newUser = User(username=regform.username.data, first_name=regform.firstname.data, last_name=regform.lastname.data, email=regform.email.data)
+        newUser.set_password(regform.password.data)
+        # Insert all the values into the database
+        db.session.add(newUser)
+        db.session.commit()
+        return redirect("/signin")
+    else:
+        return render_template("signup.html", form = regform)
 
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup', methods=['POST','GET'])
 def signup():
-    if request.method == 'POST':
-        name = request.form.get('username')
-        email = request.form.get('email')
-        password = request.form.get('password')
-        if name == "mort": # easter egg
-            return render_template('easteregg/IAM.html')
+    if request.method == "POST":
+        newuser = request.form["newusername"] # using name as dictionary key
+        # redirects us to the user page
+        return redirect(url_for("newuser", newusr=newuser))
+    else:
+        return render_template("signin.html")
 
-        user = User.query.filter_by(username=name).first() # if this returns a user, then the email already exists in database
+@app.route('/database')
+@login_required
+def index2():
+    data = User.query.all()
+    return render_template('database.html', data=data)
 
-        if user:  # if a user is found, we want to redirect back to signup page so user can try again
-            return "choose a new username"
-        else:
-            # create a new user with the form data. Hash the password so the plaintext version isn't saved.
-            new_user = User(username=name, password=password, email=email)
-
-            # add the new user to the database
-            db.session.add(new_user)
-            db.session.commit()
-
-            return redirect(url_for("login_post"))
-    return render_template('signup.html', background = random.choice(backgrounds))
-
+@app.route("/<usr>")
+def user(usr):
+    return f"<h1>{usr}</h1>"
 
 @app.route('/logout')
 def logout():

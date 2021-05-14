@@ -226,7 +226,7 @@ def index2():
 
 @app.route("/<usr>")
 def user(usr):
-    return f"<h1>{usr}</h1>"
+    return "<h1>"+usr+"</h1>"
 
 @app.route('/logout')
 def logout():

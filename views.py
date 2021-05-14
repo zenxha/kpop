@@ -5,7 +5,9 @@ import requests
 import json
 from flask import g, jsonify, flash
 from flask import render_template, request, redirect, url_for, session, Flask, Response
-from model import User, RegisterForm, LoginForm, Playlist 
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField , IntegerField
+from wtforms.validators import DataRequired, Email, EqualTo
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -19,13 +21,13 @@ from view.komay.app import ks
 from view.chris.app import chris_bp
 from BlueprintsIndividual.devam import ds
 from BlueprintsIndividual.eshaan import ep
-
-
+#from db import db_init, db
+#from model import Review, User
 with open('config.json') as file:
     config = json.load(file)
 
 
-
+basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 login = LoginManager(app)
 login.login_view = 'login_route'
@@ -38,12 +40,38 @@ app.register_blueprint(chris_bp, url_prefix='/cr')
 app.register_blueprint(ds)
 app.register_blueprint(ep)
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
+dbURI = 'sqlite:///' + os.path.join(basedir, 'models/myDB.db')
 """ database setup to support db examples """
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = dbURI
 app.config['SECRET_KEY'] = "qwerty"
+db = SQLAlchemy(app)
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(255), unique=False, nullable=False)
+    last_name = db.Column(db.String(255), unique=False, nullable=False)
+    username = db.Column(db.String(255), unique=True, nullable=False)
+    email = db.Column(db.String(255), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128))
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
 
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
+class RegisterForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    passwordconfirm = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo("password")])
+    firstname = StringField('First Name', validators=[DataRequired()])
+    lastname = StringField('Last Name', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Register')
+
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')
 backgrounds = ["https://www.teahub.io/photos/full/193-1933361_laptop-aesthetic-wallpapers-anime.jpg"]
 
 pathForImages='./images/'
@@ -103,18 +131,28 @@ def browse():
 def crossover():
     return render_template("easteregg/crossover.html")
 
-@app.route('/submit', methods=["POST", 'GET'])
-def submit():
+@app.route('/upload', methods=["POST", 'GET'])
+def upload():
     background = random.choice(backgrounds)
     if request.method == "POST":
-        playlistname = request.form["playlistname"]
-        username = request.form["username"]
-        url = request.form["url"]
-        submit = Playlist(playlistname=playlistname, username=username, url=url)
-        db.session.add(submit)
-        db.session.commit()
+        name = request.form["username"]
+        satisfaction = request.form["satisfaction"]
+        content = request.form["content"]
+        image = request.files.get('img')
+        if not image:
+            return 'bad news ur image didnt make it to our servers :((((', 400
 
-    return render_template("index.html", background=background)
+        filename = secure_filename(image.filename)
+        mimetype = image.mimetype
+        if not filename or not mimetype:
+            return 'Bad upload', 400
+
+        review = Review(username=name, content=content, img=image.read(), filename=filename, satisfaction=satisfaction,mimetype=mimetype)
+        db.session.add(review)
+        db.session.commit()
+        return redirect(url_for("browse"))
+    return render_template("homesite/loginv2.html", background=background)
+
 @app.route('/images/<int:id>')
 def get_img(id):
     img = Review.query.filter_by(id=id).first()

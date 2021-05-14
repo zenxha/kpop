@@ -21,9 +21,11 @@ function lol() {
   }, 2000);
 }
 
-const xd = () => {
+const submit = () => {
   console.log('xd')
+  alert('Success!')
 }
-document.getElementsByTagName('body')[0].addEventListener("load", xd);
+// document.getElementsByTagName('body')[0].addEventListener("load", submit);
+
 
   

@@ -24,12 +24,15 @@ def bubbleSort():
         string = request.form.get("string")
         inarr = string.split()
         input = string.split()
+        # check if inputted values are string
         if(request.form["select"] == "string"):
+            #if string then sort strings
             try:
                 isString = True
                 return render_template("crbubblesort.html",sorted_list = BubbleSort(inarr,isString).OutputList,input_list = input)
             except ValueError:
                 return render_template("crbubblesort.html",sorted_list = "Can Only Contain A String",input_list = "Error")
+        #if not string then sort for integers
         else:
             try:
                 for j in range (0,len(inarr)):

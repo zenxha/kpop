@@ -12,20 +12,6 @@ def db_init(app):
         db.create_all()
         print('h')
 
-class Review(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.Text, nullable=False)
-    content = db.Column(db.Text, nullable = False)
-    filename = db.Column(db.Text, nullable=False)
-    satisfaction = db.Column(db.Text)
-    mimetype = db.Column(db.Text, nullable=False)
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.Text, nullable=False)
-    email = db.Column(db.Text, nullable=False)
-    password = db.Column(db.Text, nullable=False)
-
 class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     playlistname = db.Column(db.Text, nullable=False)

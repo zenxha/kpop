@@ -21,10 +21,12 @@
                 <h3>Input</h3>
                 <form id="stringForm" action="/cr/bubble" method="POST" style="width:500px">
                     <textarea name="string" class="input" id="string" type="string,integer" style="height:71px; overflow:hidden; resize:none" onkeyup="success()" placeholder="Enter your an integer(1 2 5 2 6) or string(A H S R W)..."></textarea>
+                        <!-- User picks if string or integer -->
                         <select id="select" name="select" required>
                             <option value="string">String</option>
                             <option value="integer">Integer</option>
                         </select>
+                        <!-- Submit button which displays output of user-input list and sorted list -->
                         <button type="submit" id="button" style="background-color:peachpuff;">Submit</button>
                 </form>
             </div>
@@ -35,12 +37,14 @@
                         <th class="row">Inputted List</th>
                     </tr>
                     <tr>
+                        <!-- Original user-inputted list -->
                         <td>{{input_list}}</td>
                     </tr>
                     <tr>
                         <th class="row">Sorted List</th>
                     </tr>
                     <tr>
+                        <!-- Sorted user-inputted list -->
                         <td>{{sorted_list}}</td>
                     </tr>
                 </table>

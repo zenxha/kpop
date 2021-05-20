@@ -3,17 +3,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script src="{{url_for('static', filename='index.js')}}"></script> 
  <form method='post' onsubmit="submit()">
-  <div class="border  p-4">
+  <div class="border p-4"><h3 style="color: hotpink; text-decoration: underline; text-decoration-thickness: 3px;">Enter Song Information</h3>
   <div class="form-group w-100">
-    <label for="name">Playlist Name</label>
+    <label for="name" style="color: hotpink">Playlist Name</label>
     <input type="text" required class="form-control" name="playlistname" id="playlistname" aria-describedby="emailHelp" placeholder="jams">
   </div>
   <div class="form-group">
-    <label for="username">Author/Credits</label>
+    <label for="username" style="color: hotpink">Author/Credits</label>
     <input type="text" required class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Author/Credits">
   </div>
   <div class="form-group">
-    <label for="url">Playlist URL</label>
+    <label for="url" style="color: hotpink">Playlist URL</label>
     <input type="text" required class="form-control input-lg" name="url" id="url" aria-describedby="emailHelp" placeholder="URL">
   </div>
   <div class="col text-center"><button type="submit" class="btn btn-success" onclick="submit()">Submit</button></div>

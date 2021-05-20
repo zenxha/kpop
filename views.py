@@ -11,10 +11,11 @@ from model import db, db_init
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 from BlueprintsIndividual.sample_bp import kpop, jpop
-from BlueprintsIndividual.api_view import api
+# from BlueprintsIndividual.api_view import api
 from BlueprintsIndividual.charlie import cz
 from view.komay.app import ks
 from view.chris.app import chris_bp
+from view.api.app import api
 from BlueprintsIndividual.devam import ds
 from BlueprintsIndividual.eshaan import ep
 
@@ -57,7 +58,7 @@ def index():
     quote = response.json()['content']
     author = response.json()['author']
     background = random.choice(backgrounds)
-    return render_template("index.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", quote=quote, author = author)
+    return render_template("base2.html", background="https://cdn.wallpapersafari.com/91/31/z4AvR6.jpg", quote=quote, author = author)
 
 @app.route('/bootstrap')
 def bootstrap():

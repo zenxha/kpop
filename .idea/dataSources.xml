@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:sqlite:C:\Users\simvi\Desktop\School\CSP\sushi\img.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="database" uuid="337e37a3-55ba-40a3-a55b-0ce9060cf059">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\socce\IdeaProjects\kpop\database.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

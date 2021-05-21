@@ -36,18 +36,3 @@ def randomPlaylist():
 
     return jsonify(random.choice(playlists))
 
-@api.route('/playlist/<int:id>')
-def get_playlist(id):
-    playlist = Playlist.query.filter_by(id=id).first()
-    if playlist:
-        playlist_dict = {
-            'id': playlist.id,
-            'username': playlist.username,
-            'playlist_name': playlist.playlistname,
-            'playlist_url': playlist.url,
-
-        }
-        return jsonify(playlist_dict)
-
-    else:
-        return Response("No playlist with that id ", status=400)

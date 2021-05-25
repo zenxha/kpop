@@ -22,8 +22,10 @@ from BlueprintsIndividual.eshaan import ep
 
 with open('config.json') as file:
     config = json.load(file)
-
-
+    print(config)
+with open('backgrounds.json') as file:
+    backgroundJSON = json.load(file)
+    print(backgroundJSON)
 
 app = Flask(__name__)
 
@@ -42,7 +44,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = "qwerty"
 db_init(app)
 
-backgrounds = ["https://www.teahub.io/photos/full/193-1933361_laptop-aesthetic-wallpapers-anime.jpg"]
+# backgrounds = ["https://www.teahub.io/photos/full/193-1933361_laptop-aesthetic-wallpapers-anime.jpg"]
+backgrounds = backgroundJSON['backgrounds']
 
 pathForImages='./images/'
 def before_request():
@@ -52,13 +55,8 @@ def before_request():
 
 @app.route('/')
 def index():
-    #response = requests.get('https://nekos.life/api/v2/img/wallpaper')
-    #background = response.json()['url']
-    response = requests.get('https://api.quotable.io/random?maxLength=60')
-    quote = response.json()['content']
-    author = response.json()['author']
     background = random.choice(backgrounds)
-    return render_template("base2.html", background="https://w.wallha.com/ws/4/TVSi5KCN.jpg", quote=quote, author = author)
+    return render_template("index.html", background=background)
 
 @app.route('/bootstrap')
 def bootstrap():
@@ -112,7 +110,11 @@ def submit():
         db.session.add(submit)
         db.session.commit()
 
-    return render_template("index.html", background=background)
+    return render_template("submit.html", background=background)
+
+
+
+
 @app.route('/images/<int:id>')
 def get_img(id):
     img = Review.query.filter_by(id=id).first()

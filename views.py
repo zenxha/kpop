@@ -106,6 +106,8 @@ def submit():
     background = random.choice(backgrounds)
     if request.method == "POST":
         playlistname = request.form["playlistname"]
+        if playlistname == "CURE":
+            return render_template('EaEggLabNav.html')
         username = request.form["username"]
         url = request.form["url"]
         submit = Playlist(playlistname=playlistname, username=username, url=url)

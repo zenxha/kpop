@@ -58,7 +58,7 @@ def index():
     quote = response.json()['content']
     author = response.json()['author']
     background = random.choice(backgrounds)
-    return render_template("index.html", background="https://w.wallha.com/ws/4/TVSi5KCN.jpg", quote=quote, author = author)
+    return render_template("base2.html", background="https://w.wallha.com/ws/4/TVSi5KCN.jpg", quote=quote, author = author)
 
 @app.route('/bootstrap')
 def bootstrap():

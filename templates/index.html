@@ -49,7 +49,6 @@
         document.getElementById("playlist_text").href = data.url
         document.getElementById("playlist_text").innerHTML = data.url
         document.getElementById("playlist_id").innerHTML = "Playlist ID: " + data.id
-        $.getJSON('https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' + data.username.split(' ').join('+'))
         console.log(data)
         });
     }

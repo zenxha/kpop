@@ -1,1 +1,57 @@
 {% extends 'base2.html' %}
+{% block body %}
+<button onclick="getPlaylist()" type="button" class="btn btn-info">Get random playlist</button>
+
+
+<div id="container_body">
+    <div id="playlist_container" class="container-card">
+      <h1 id="playlist_name" class="container-card-title"></h1>
+      <div id="playlist_data_container" class="container-card-body">
+        <span id="playlist_url">
+          <i class="fa fa-globe"></i>
+          <a id="playlist_url_text" href=""></a>
+        </span>
+        <span id="playlist_other_artists">
+          <i class="fa fa-warning"></i><span id="playlist_other_artists_text"></span></span><br>
+        <span id="playlist_credits">
+          <i class="fa fa-user"></i>
+          <span id="playlist_credits_text"></span>
+        </span><br>
+        <span id="playlist_id">
+            <i class="fa fa-clock-o"></i>
+            <span id="playlist_id_text"></span>
+          </span>
+      </div>
+    </div>
+
+<script type="text/javascript" async="" src="{{url_for('ks.static', filename='display.js')}}"></script>
+<script>
+    const getPlaylist = () => {
+        $.getJSON('{{websiteurl}}' + '/api/random', (data) => {
+        document.getElementById("playlist_name").innerHTML = data.playlistname
+        document.getElementById("playlist_url_text").innerHTML = data.url
+        document.getElementById("playlist_url_text").href = data.url
+        document.getElementById("playlist_credits_text").innerHTML = "Submitted by " +data.username
+        document.getElementById("playlist_id_text").innerHTML = "ID" + data.id
+        console.log(data)
+        });
+    }
+    const ee = () => {
+        console.log('ee')
+    }
+    console.log('hi')
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="{{url_for('ks.static', filename='style.css')}}">
+
+
+
+
+
+<style>
+
+</style>
+
+
+
+{% endblock %}

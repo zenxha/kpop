@@ -56,7 +56,7 @@ def before_request():
 @app.route('/')
 def index():
     background = random.choice(backgrounds)
-    return render_template("index.html", background=background)
+    return render_template("index.html", background=background, websiteurl=config['websiteURL'])
 
 @app.route('/bootstrap')
 def bootstrap():

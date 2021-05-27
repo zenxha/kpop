@@ -1,38 +1,47 @@
 {% extends 'base2.html' %}
 {% block body %}
 <button onclick="getPlaylist()" type="button" class="btn btn-info">Get random playlist</button>
+<br>
 
-
-<div id="container_body">
-    <div id="playlist_container" class="container-card">
-      <h1 id="playlist_name" class="container-card-title"></h1>
-      <div id="playlist_data_container" class="container-card-body">
-        <span id="playlist_url">
-          <i class="fa fa-globe"></i>
-          <a id="playlist_url_text" href=""></a>
-        </span>
-        <span id="playlist_other_artists">
-          <i class="fa fa-warning"></i><span id="playlist_other_artists_text"></span></span><br>
-        <span id="playlist_credits">
-          <i class="fa fa-user"></i>
-          <span id="playlist_credits_text"></span>
-        </span><br>
-        <span id="playlist_id">
-            <i class="fa fa-clock-o"></i>
-            <span id="playlist_id_text"></span>
-          </span>
-      </div>
+<div class="container">
+  
+    <div class="row justify-content-center">
+      
+    <div class="col-sm-4">
+        <div class="card text-white card-has-bg click-col mx-auto" id="playlist_card" href="#" >
+           <img class="card-img d-none" src="https://source.unsplash.com/600x900/?computer,design" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+          <div class="card-img-overlay d-flex flex-column">
+           <div class="card-body">
+              <small class="card-meta mb-2" id="playlist_id" >Playlist ID:</small>
+              <h4 class="card-title mt-0" id="playlist_name">Click the button to get a playlist!<a class="text-white" href="#"></a></h4>
+         
+              <a id="playlist_text" href=""></a>
+            </div>
+            <div class="card-footer">
+             <div class="media">
+    <img class="mr-3 rounded-circle" src="https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg" alt="Generic placeholder image" style="max-width:50px">
+    <div class="media-body">
+      <h6 class="my-0 text-white d-block">Submitted by</h6>
+       <h6 id="playlist_credits_text"></h6>
     </div>
-
+  </div>
+            </div>
+          </div>
+        </div></div>
+    
+  </div>
+    
+  </div>
 <script type="text/javascript" async="" src="{{url_for('ks.static', filename='display.js')}}"></script>
 <script>
     const getPlaylist = () => {
         $.getJSON('{{websiteurl}}' + '/api/random', (data) => {
+        document.getElementById("playlist_credits_text").innerHTML = data.username
         document.getElementById("playlist_name").innerHTML = data.playlistname
-        document.getElementById("playlist_url_text").innerHTML = data.url
-        document.getElementById("playlist_url_text").href = data.url
-        document.getElementById("playlist_credits_text").innerHTML = "Submitted by " +data.username
-        document.getElementById("playlist_id_text").innerHTML = "ID" + data.id
+        document.getElementById("playlist_text").href = data.url
+        document.getElementById("playlist_text").innerHTML = data.url
+        document.getElementById("playlist_id").innerHTML = "Playlist ID: " + data.id
+        $.getJSON('https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' + data.username.split(' ').join('+'))
         console.log(data)
         });
     }

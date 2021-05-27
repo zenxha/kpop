@@ -47,27 +47,18 @@
              <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li> -->
         </ul>
     </nav>
+    {% block toptext %}
     <h1 style="color:aquamarine; padding-top: 3%;">
         Welcome To the Minilab Easteregg Webpage!
     </h1>
+    {% endblock %}
     {% block title %} {% endblock %}
     {% block body %} {% endblock %}
-    {% block pagecontent %} {% endblock %}
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
 
-    {% for message in messages %}
-    <span style = "color: white">{{ message }}</span>
-    {% endfor %}
 
-    {% endif %}
-    {% endwith %}
-    {% block header %}
-    {% endblock %}
-    {% block projectplan %}
-    {% endblock %}
-    {% block content %}
-    {% endblock %}
+
+
+
 
 </header>
 

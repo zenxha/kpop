@@ -56,7 +56,7 @@
           <div class="card-block">
               <h5 class="m-b-20">{{item['name']}}</h6>
               <h6 class="card-subtitle mb-2 text-muted">By {{item['artist'].name}}</h6>
-              <p class="card-text">Match percentage:<span class="f-right">{{item['match'] * 100|round}}%</span></p>
+              <p class="card-text">Match percentage:<span class="f-right">{{(item['match'] * 100)|round|int}}%</span></p>
               <p class="card-text">last.fm playcount:<span class="f-right">{{item['playcount']}}</span></p>
               <a href="{{item['url']}}" class="card-link">Listen here!</a>
           </div>

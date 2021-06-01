@@ -12,24 +12,25 @@
     <div class="bg-contact2">
         <div class="container-contact2">
             <div class="wrap-contact2">
-                <form class="contact2-form validate-form" method='post'>
+                <form class="contact2-form validate-form" name="playlistform" method='post' onsubmit="return validate()">
 					<span class="contact2-form-title">
 						Submit your playlist
 					</span>
 
                     <div class="wrap-input2 validate-input" data-validate="Playlist Name is Required">
-                        <input class="input2" type="text" name="playlistname" id="playlistname" required>
-                        <span class="focus-input2" data-placeholder="PLAYLIST NAME"></span>
+                        <input class="input2" type="text" name="playlistname" id="playlistname" placeholder="Playlist Name" required>
+                        <!-- <span class="focus-input2" data-placeholder=" NAME"></span> -->
+                        
                     </div>
 
-                    <div class="wrap-input2 validate-input" data-validate="Valid Author is Required: Eunha">
-                        <input class="input2" type="text" name="username" id="username" required>
-                        <span class="focus-input2" data-placeholder="AUTHOR/CREDITS"></span>
+                    <div class="wrap-input2 validate-input" data-validate="">
+                        <input class="input2" type="text" name="username" id="username" placeholder="Your Username" required>
+                        <!-- <span class="focus-input2" data-placeholder="AUTHOR/CREDITS"></span> -->
                     </div>
 
                     <div class="wrap-input2 validate-input" data-validate="Playlist URL is Required">
-                        <textarea class="input2" name="url" required></textarea>
-                        <span class="focus-input2" data-placeholder="PLAYLIST URL"></span>
+                        <input class="input2" name="url" placeholder="https://open.spotify.com/playlist/4CuSTeoPQlN3ltgbaJCfrX?si=ab3d0295bc334f69" required></textarea>
+                       <!--  <span class="focus-input2" data-placeholder="PLAYLIST URL"></span> -->
                     </div>
 
                     <div class="container-contact2-form-btn">
@@ -53,11 +54,14 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-23581568-13');
+        function validate() {
+            var x = document.forms["playlistform"]["url"].value;
+            console.log(x)
+        if (!x.startsWith('https://open.spotify.com')) {
+            alert("Invalid spotify link");
+            return false;
+        }
+        }
     </script>
 
     <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;rayId&quot;:&quot;652a4c10eec33660&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2021.5.1&quot;,&quot;si&quot;:10}"></script>

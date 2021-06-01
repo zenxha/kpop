@@ -69,6 +69,9 @@ def bootstrap():
 def project():
     return render_template("homesite/project.html", background=random.choice(backgrounds))
 
+@app.route('/aboutus')
+def about():
+    return render_template("aboutus.html")
 
 @app.route('/easteregg')
 def easteregg():

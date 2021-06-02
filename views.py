@@ -75,6 +75,10 @@ def about():
 def about2():
     return render_template("about.html")
 
+@app.route('/rate')
+def rate():
+    return render_template("rate.html")
+
 
 @app.route('/browse')
 def browse():

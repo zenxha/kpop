@@ -6,9 +6,9 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
-            src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-            crossorigin="anonymous"></script>
+                src="https://code.jquery.com/jquery-3.6.0.js"
+                integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="icon" href="../static/pixel_art_pizza_by_chinyiun_de3ewdq-fullview.gif">
@@ -23,6 +23,7 @@
             <!-- <audio source src="unravel.mp3" type="audio/mpeg"  controls autoplay></audio> -->
             <li><a href="{{url_for('submit')}}">Submit Playlist</a></li>
             <li><a href="{{url_for('ks.index')}}">Find songs</a></li>
+            <li><a href="{{url_for('about')}}">About the Creators</a></li>
             <!-- <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
              <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li> -->
         </ul>
@@ -32,7 +33,7 @@
     {% block header %} {% endblock %}
     {% block body %} {% endblock %}
     {% block pagecontent %} {% endblock %}
-    
+
 
 </header>
 

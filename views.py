@@ -110,6 +110,8 @@ def submit():
         if playlistname == "CURE":
             return render_template('EaEggLabNav.html')
         username = request.form["username"]
+        if username == "mort":
+            return render_template('aboutus.html')
         url = request.form["url"]
         submit = Playlist(playlistname=playlistname, username=username, url=url)
         db.session.add(submit)

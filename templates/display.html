@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
-</body>
-</html>
+<table style="SSswidth: 100%; height: 100%; background-color: #ffffff;" border="1">
+    <thead>
+    <tr>
+        <th>Rate</th>
+        <th>Comment</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in data %}
+    <tr>
+        <td>{{user.rate}}</td>
+        <td>{{user.comment}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -77,6 +77,10 @@ def about():
 def easteregg():
     return render_template("easteregg/base.html", background="https://i.pinimg.com/originals/b8/e2/70/b8e270b7237f2f4c3a5905e6a3ca5f63.png")
 
+@app.route('/rate')
+def rate():
+    return render_template("rate.html")
+
 
 @app.route('/browse')
 def browse():

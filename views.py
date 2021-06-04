@@ -53,6 +53,10 @@ def before_request():
     if 'user' in session:
         g.user = session['user']
 
+@app.route('/test')
+def test():
+    return render_template("base2.html")
+
 @app.route('/', methods=["POST", 'GET'])
 def index():
     background = random.choice(backgrounds)

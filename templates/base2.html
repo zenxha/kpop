@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
                 src="https://code.jquery.com/jquery-3.6.0.js"
@@ -11,21 +10,24 @@
                 crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <link rel="icon" href="../static/pixel_art_pizza_by_chinyiun_de3ewdq-fullview.gif">
+        <link rel="icon" href="static/pixel_art_pizza_by_chinyiun_de3ewdq-fullview.gif">
         {% block head %} {% endblock %}
     </head>
     <title>Kpop</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- TRY THIS NAVBAR https://www.kpopchannel.tv/ -->
+
     <nav style="position: relative;">
         <script type="text/javascript" src="home/sushi/venv/Lib/site-packages/werkzeug/debug/shared/jquery.js"></script>
         <h1 class="logo"><a href="/">KPOP</a></h1>
         <ul>
             <!-- <audio source src="unravel.mp3" type="audio/mpeg"  controls autoplay></audio> -->
-            <li><a href="{{url_for('submit')}}">Submit Playlist</a></li>
             <li><a href="{{url_for('ks.index')}}">Find songs</a></li>
             <li><a href="{{url_for('about')}}">About the Creators</a></li>
             <!-- <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
              <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li> -->
+            <li><button name="" class="" type="button" formmethod="get" formtarget="_self"><img src="static/images/navbutton2.png" width="20" height="20" style="margin-top:23px; background-color:transparent;" ></button></li>
         </ul>
     </nav>
 
@@ -48,7 +50,7 @@
         border: none;
         outline: none;
         font-size: 100%;
-        font-family: "Roboto";
+        font-family: "Roboto",sans-serif;
         text-decoration: none;
         box-sizing: border-box;
     }
@@ -58,6 +60,12 @@
         height: 100%;
         background-color: unset;
     }
+
+
+    button{
+        background-color: transparent;
+    }
+
 
     a:hover{
         color:whitesmoke;

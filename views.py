@@ -52,9 +52,24 @@ def before_request():
     if 'user' in session:
         g.user = session['user']
 
-@app.route('/')
+@app.route('/test')
+def test():
+    return render_template("base2.html")
+
+@app.route('/', methods=["POST", 'GET'])
 def index():
     background = random.choice(backgrounds)
+    if request.method == "POST":
+        playlistname = request.form["playlistname"]
+        if playlistname == "CURE":
+            return render_template('EaEggLabNav.html')
+        username = request.form["username"]
+        if username == "mort":
+            return render_template('aboutus.html')
+        url = request.form["url"]
+        submit = Playlist(playlistname=playlistname, username=username, url=url)
+        db.session.add(submit)
+        db.session.commit()
     return render_template("index.html", background=background, websiteurl=config['websiteURL'])
 
 @app.route('/bootstrap')

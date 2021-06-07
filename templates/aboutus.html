@@ -1,22 +1,17 @@
 {% extends "base2.html" %}
 {% block header %}
 
-
+<!-- ABOUT US -->
 <!-- body -->
-<div class="main-layout" style="background-color:clear;">
-    <!-- loader  -->
-    <div class="loader_bg">
-        <div class="loader"><img src="/static/images/Headeraboutus.gif" alt="#" /></div>
-    </div>
-    <!-- end loader -->
+<div class="main-layout" style="background-color:transparent;">
 
     <!--Our  Clients -->
     <div id="plant" class="section_Clients layout_padding padding_bottom_0">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 ">
-                    <div class="titlepage" style="color: white">
-                        <h2> About Us</h2>
+                    <div class="titlepage" style="color: white; padding-top: 5%;">
+                        <h2> About The Creators</h2>
                     </div>
                 </div>
             </div>
@@ -43,7 +38,7 @@
                             <div class="carousel-item active">
                                 <div class="titlepage">
                                     <div class="john">
-                                        <div class="john_image"><img src="/static/images/czpfp.gif" style="max-width:100%;"></div>
+                                        <div class="john_image"><img src="/static/images/czpfp.gif" style="max-width:100%; padding-left: 40%;"></div>
                                         <div class="john_text" style="color: white">Charlie Zhu</div>
                                         <p class="lorem_ipsum_text" style="color: white">"I am a junior at Del Norte High School. I was born in San Diego
                                             and am currently 16 years old. I have an older sister who is in college.
@@ -54,7 +49,7 @@
                             <div class="carousel-item">
                                 <div class="titlepage">
                                     <div class="john">
-                                        <div class="john_image"><img src="/static/images/kspfp.gif" style="max-width:100%;"></div>
+                                        <div class="john_image"><img src="/static/images/kspfp.gif" style="max-width:100%; padding-left: 30%;"></div>
                                         <div class="john_text" style="color: white">Komay Sugiyama</div>
                                         <p class="lorem_ipsum_text" style="color: white">"I am a 16 year old Junior at Del Norte High School and I was born in Austin, Texas. I have one younger brother in the 9th grade who also goes to DNHS. Things I enjoy doing in my free time are eating, reading, and playing video games."</p>
                                     </div>
@@ -63,7 +58,7 @@
                             <div class="carousel-item">
                                 <div class="titlepage">
                                     <div class="john">
-                                        <div class="john_image"><img src="/static/images/devampfp.gif" style="max-width:100%;"></div>
+                                        <div class="john_image"><img src="/static/images/devampfp.gif" style="max-width:100%; padding-left: 35%;"></div>
                                         <div class="john_text" style="color: white">Devam Shrivastava</div>
                                         <p class="lorem_ipsum_text" style="color: white">"I am a junior at Del Norte High School. I am 17 years old and I was born in Scripps Ranch. In my free time I like to watch anime and play video games with my friends. My favorite anime is Jujutsu Kaisen."</p>
                                     </div>
@@ -72,34 +67,34 @@
                             <div class="carousel-item">
                                 <div class="titlepage">
                                     <div class="john">
-                                        <div class="john_image"><img src="/static/images/Chris.png" style="max-width:100%;"></div>
+                                        <div class="john_image"><img src="/static/images/Chris.png" style="max-width:100%; padding-left: 40%;"></div>
                                         <div class="john_text" style="color: white">Chris Rubin</div>
-                                        <p class="lorem_ipsum_text" style="color: white">"I am a junior at Del Norte High School. I am 17 years old and I was born in Scripps Ranch. In my free time I like to watch anime and play video games with my friends. My favorite anime is Jujutsu Kaisen."</p>
+                                        <p class="lorem_ipsum_text" style="color: white">"I am a junior at Del Norte High School. I am 18 years old and I was born in Pomerado. I have 10 siblings, 6 sisters and 4 brothers. Four of them have graduated from college and two of them are in college currently. In my free time I like playing video games, hanging out with friends, skateboarding, watching anime, and my favorite anime is Black Clover."</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="titlepage">
                                     <div class="john">
-                                        <div class="john_image"><img src="/static/images/deeppfp.png" style="max-width:100%;"></div>
+                                        <div class="john_image"><img src="/static/images/deeppfp.png" style="max-width:100%; padding-left: 40%;"></div>
                                         <div class="john_text" style="color: white">Eshaan Parlikar</div>
                                         <p class="lorem_ipsum_text" style="color: white">"I am a 17 year old junior at Del Norte High School who was born in San Diego. I have two older sisters, one who currently attends Abraxas and the other recently graduating from NYU with a politics major. Currently, I enjoy playing video games and drumming, and my favorite anime is Fullmetal Alchemist: Brotherhood."</p>
                                     </div>
                                 </div>
                             </div>
-                        <a class="carousel-control-prev" href="#testimonial" data-slide="prev"><span class="carousel-control-prev-icon"></span></a> <a class="carousel-control-next" href="#testimonial" data-slide="next"><span class="carousel-control-next-icon"></span></a></div>
+                            <a class="carousel-control-prev" href="#testimonial" data-slide="prev"><span class="carousel-control-prev-icon"></span></a> <a class="carousel-control-next" href="#testimonial" data-slide="next"><span class="carousel-control-next-icon"></span></a></div>
 
 
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </div>
-</div>
 <!-- end Our  Clients -->
-
+<!-- END OF ABOUT US -->
 <!-- Javascript files-->
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
@@ -116,24 +111,30 @@
 <script src="js/owl.carousel.js"></script>
 <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
+    $(document).ready(function(){
+        $(".fancybox").fancybox({
+            openEffect: "none",
+            closeEffect: "none"
+        });
 
-         $(".zoom").hover(function(){
+        $(".zoom").hover(function(){
 
-         $(this).addClass('transition');
-         }, function(){
+            $(this).addClass('transition');
+        }, function(){
 
-         $(this).removeClass('transition');
-         });
-         });
+            $(this).removeClass('transition');
+        });
+    });
 
-      </script>
+</script>
+</div>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </div>
+<style>
+    body,html{
+        overflow-y: hidden;
+    }
+</style>
 {% endblock %}

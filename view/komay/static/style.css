@@ -1,5 +1,6 @@
 body {
     background-color: #fcbf49;
+    overflow-x: hidden;
 }
 .wrapper {
     margin: 10vh;

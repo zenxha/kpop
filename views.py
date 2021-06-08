@@ -25,7 +25,7 @@ with open('config.json') as file:
     print(config)
 with open('backgrounds.json') as file:
     backgroundJSON = json.load(file)
-    print(backgroundJSON)
+    print("Backgrounds:\n", "\n\n     *".join(backgroundJSON['backgrounds']))
 
 app = Flask(__name__)
 
@@ -41,7 +41,6 @@ app.register_blueprint(ep)
 """ database setup to support db examples """
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SECRET_KEY'] = "qwerty"
 db_init(app)
 
 # backgrounds = ["https://www.teahub.io/photos/full/193-1933361_laptop-aesthetic-wallpapers-anime.jpg"]
@@ -84,13 +83,12 @@ def bootstrap():
 def project():
     return render_template("homesite/project.html", background=random.choice(backgrounds))
 
-@app.route('/aboutus')
+@app.route('/about')
 def about():
     return render_template("aboutus.html")
-
-@app.route('/easteregg')
-def easteregg():
-    return render_template("easteregg/base.html", background="https://i.pinimg.com/originals/b8/e2/70/b8e270b7237f2f4c3a5905e6a3ca5f63.png")
+@app.route('/about2')
+def about2():
+    return render_template("about.html")
 
 @app.route('/rate')
 def rate():

@@ -27,6 +27,7 @@ class Song:
         res = response.json()
 
         res_array = []
+
         if res['similartracks']:
             for song in res['similartracks']['track']:
                 res_array.append(song)

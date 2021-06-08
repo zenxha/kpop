@@ -14,7 +14,7 @@ from BlueprintsIndividual.sample_bp import kpop, jpop
 # from BlueprintsIndividual.api_view import api
 from BlueprintsIndividual.charlie import cz
 from view.komay.app import ks
-from view.chris.app import chris_bp
+from view.chris.app import cr
 from view.api.app import api
 from BlueprintsIndividual.devam import ds
 from BlueprintsIndividual.eshaan import ep
@@ -34,7 +34,7 @@ app.register_blueprint(jpop, url_prefix="/jpop")
 app.register_blueprint(api)
 app.register_blueprint(cz)
 app.register_blueprint(ks)
-app.register_blueprint(chris_bp, url_prefix='/cr')
+app.register_blueprint(cr, url_prefix='/cr')
 app.register_blueprint(ds)
 app.register_blueprint(ep)
 # SQLAlchemy config. Read more: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
@@ -55,7 +55,7 @@ def before_request():
 
 @app.route('/test')
 def test():
-    return render_template("base2.html")
+    return render_template("temp.html")
 
 @app.route('/', methods=["POST", 'GET'])
 def index():

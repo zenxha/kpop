@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, jsonify, request
 import json, random
-
+with open('backgrounds.json') as file:
+    backgroundJSON = json.load(file)
+    bg = backgroundJSON['backgrounds']
 
 api = Blueprint('api', __name__ ,url_prefix='/api', static_folder="static", template_folder="templates")
 from model import Playlist
@@ -51,3 +53,9 @@ def get_playlist(id):
 
     else:
         return Response("No playlist with that id ", status=400)
+
+
+@api.route('/randombg', methods = ["GET","POST"])
+def randomBackground():
+
+    return jsonify({'url': random.choice(bg)})

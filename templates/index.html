@@ -9,15 +9,14 @@
 {% endblock %}
 {% block body %}
 <!-- POSTED PLAYLIST -->
-<div class="container justify-content-start" style="margin-right: -25%; padding-right:-35%; margin-top: 2%; margin-bottom: 1%;">
-    <button onclick="getPlaylist()" type="button" class="btn btn-info">Get random playlist</button>
-</div>
+
 
 <div class="container">
-
     <div class="row justify-content-end">
-
         <div class="col-sm-4">
+            <div class="container justify-content-start" style="margin-right: -25%; padding-right:-35%; margin-top: 2%; margin-bottom: 1%;">
+                <button onclick="getPlaylist()" type="button" class="btn btn-info">Get random playlist</button>
+            </div>
             <div class="card text-white card-has-bg click-col mx-auto" id="playlist_card" href="#" >
                 <img class="card-img d-none" src="https://source.unsplash.com/600x900/?computer,design" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
                 <div class="card-img-overlay d-flex flex-column">
@@ -25,7 +24,7 @@
                         <small class="card-meta mb-2" id="playlist_id" >Playlist ID:</small>
                         <h4 class="card-title mt-0" id="playlist_name">Click the button to get a playlist!<a class="text-white" href="#"></a></h4>
 
-                        <a id="playlist_text" href=""></a>
+                        <a onclick="Open()" id="playlist_text"></a>
                     </div>
                     <div class="card-footer">
                         <div class="media">
@@ -91,7 +90,7 @@
         $.getJSON('{{websiteurl}}' + '/api/random', (data) => {
         document.getElementById("playlist_credits_text").innerHTML = data.username
         document.getElementById("playlist_name").innerHTML = data.playlistname
-        document.getElementById("playlist_text").href = data.url
+        //document.getElementById("playlist_text").href = data.url
         document.getElementById("playlist_text").innerHTML = data.url
         document.getElementById("playlist_id").innerHTML = "Playlist ID: " + data.id
         console.log(data)
@@ -101,6 +100,9 @@
         console.log('ee')
     }
     console.log('hi')
+    function Open() {
+        window.open(document.getElementById("playlist_text").innerHTML, "_blank");
+    }
 </script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="{{url_for('ks.static', filename='style.css')}}">

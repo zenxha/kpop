@@ -28,7 +28,7 @@ class Song:
 
         res_array = []
 
-        if res['similartracks']:
+        if 'similartracks' in res:
             for song in res['similartracks']['track']:
                 res_array.append(song)
 
@@ -42,5 +42,14 @@ class Song:
                 print(self._sorttype)
 
             return res_array
-        return []
-
+        else:
+            return [                {
+                "name": "Check your parameters again",
+                "playcount": 0,
+                "match": 0,
+                "url": "https://www.last.fm/music/Official+HIGE+DANdism/_/Shukumei",
+                "artist": {
+                    "name": "Invalid Artist Link",
+                    "url": "https://www.last.fm/music/Official+HIGE+DANdism"
+                },
+            }]

@@ -220,7 +220,7 @@
    }
 
    textarea.input2 {
-       min-height: 75px;
+       height: 40px;
        padding-top: 13px;
        padding-bottom: 13px;
        resize: none;

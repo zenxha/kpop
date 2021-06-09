@@ -25,7 +25,7 @@ with open('config.json') as file:
     print(config)
 with open('backgrounds.json') as file:
     backgroundJSON = json.load(file)
-    print("Backgrounds:\n", "\n\n     *".join(backgroundJSON['backgrounds']))
+    print("Backgrounds:\n*", "\n\n     *".join(backgroundJSON['backgrounds']))
 
 app = Flask(__name__)
 

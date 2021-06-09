@@ -3,20 +3,20 @@ from .algo.songshuffle import song
 from .algo.bubblesort import BubbleSort
 
 
-chris_bp = Blueprint('chris_bp', __name__, template_folder='templates', static_folder='static', static_url_path='assets')
+cr = Blueprint('cr', __name__, template_folder='templates', static_folder='static', static_url_path='assets')
 
 
-@chris_bp.route('/')
+@cr.route('/')
 def index():
     return render_template('chrishome.html')
 
 
-@chris_bp.route('/shuffle')
+@cr.route('/shuffle')
 def shuffle():
     return render_template('shuffle.html', song=song())
 
 
-@chris_bp.route('/bubble', methods = ["GET","POST"])
+@cr.route('/bubble', methods = ["GET","POST"])
 def bubbleSort():
     inarr = []
     isString = False

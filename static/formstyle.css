@@ -9,7 +9,7 @@
 
     body, html {
         height: 100%;
-        overflow-x: hidden;
+        overflow: hidden;
     }
 
     /*---------------------------------------------*/
@@ -126,6 +126,7 @@
         border-radius: 10px;
         overflow: hidden;
         padding: 30px 30px 30px 30px;
+        opacity: 0.8;
     }
 
 

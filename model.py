@@ -17,3 +17,9 @@ class Playlist(db.Model):
     playlistname = db.Column(db.Text, nullable=False)
     username = db.Column(db.Text, nullable=False)
     url = db.Column(db.Text, nullable=False)
+
+class MV(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    songname = db.Column(db.Text, nullable=False)
+    username = db.Column(db.Text, nullable=False)
+    url = db.Column(db.Text, nullable=False)

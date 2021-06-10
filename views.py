@@ -72,6 +72,23 @@ def index():
         db.session.commit()
     return render_template("index.html", background=background, websiteurl=config['websiteURL'])
 
+@app.route('/browse')
+def browse():
+    playlist_query = Playlist.query.all()
+    playlists = []
+
+    for playlist in playlist_query:
+        #"websiteurl = url_for('', id=MV.id)"
+
+        playlist_dict = {
+            'id': playlist.id,
+            'username': playlist.username,
+            'playlist name': playlist.playlistname,
+            'url':  playlist.url
+        }
+        playlists.append(playlist_dict)
+    return render_template("browse.html", playlists=playlists, background=random.choice(backgrounds))
+
 @app.route('/bootstrap')
 def bootstrap():
     return render_template('Bootstrap_login_example.html')
@@ -93,26 +110,6 @@ def about2():
 @app.route('/rate')
 def rate():
     return render_template("rate.html")
-
-
-@app.route('/browse')
-def browse():
-    backgrounds = ["https://cdn.discordapp.com/attachments/784178874303905792/818606015494094868/812382.png"]
-    review_query = Review.query.all()
-    reviews = []
-
-    for review in review_query:
-        websiteurl = url_for('get_img', id=review.id)
-
-        review_dict = {
-            'id': review.id,
-            'username': review.username,
-            'content': review.content,
-            'satisfaction': review.satisfaction,
-            'image':  websiteurl
-        }
-        reviews.append(review_dict)
-    return render_template("homesite/browse.html", reviews=reviews, background=random.choice(backgrounds))
 
 
 @app.route('/easteregg/crossover')
@@ -146,12 +143,3 @@ def get_img(id):
         return 'No img with that id', 200
 
     return Response(img.img, mimetype=img.mimetype)
-
-
-"""
-@app.route('/profile/<int:id>')
-def profile(id):
-    img = 2
-    return render_template("homesite/profile.html", name=current_user.name)
-"""
-

@@ -28,7 +28,7 @@
             <li><a href="{{url_for('about')}}">About the Creators</a></li>
             <!-- <li><a href="{{ url_for('kpop.index')}}">Kpop</a></li>
              <li><a href="{{ url_for('jpop.index2')}}">Jpop</a></li> -->
-            <li><button name="" class="" type="button" formmethod="get" formtarget="_self"><img src="static/images/navbutton2.png" width="20" height="20" style="margin-top:23px; background-color:transparent;" ></button></li>
+            <li><button onclick="changeBackground()" name="" class="" type="button" formmethod="get" formtarget="_self"><img src="static/images/navbutton2.png" width="20" height="20" style="margin-top:23px; background-color:transparent;" ></button></li>
         </ul>
     </nav>
 
@@ -85,6 +85,7 @@
         position: absolute;
         align-items: center;
         flex-direction: column;
+
     }
 
     header:before {
@@ -204,3 +205,14 @@
     {% block style %}
     {% endblock %}
 </style>
+
+
+<script>
+    const changeBackground = () => {
+        $.getJSON('{{websiteurl}}' + '/api/randombg', (data) => {
+            $('header').css('background', `linear-gradient(rgba(103, 135, 211, .6), rgba(144, 25, 166, .6)), url(${data.url}) no-repeat center center fixed`)
+        console.log(data)
+        });
+        
+    }
+</script>

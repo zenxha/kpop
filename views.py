@@ -7,7 +7,6 @@ from flask import g, jsonify, flash
 from flask import render_template, request, redirect, url_for, session, Flask, Response
 from model import Playlist 
 from model import db, db_init
-
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 from BlueprintsIndividual.sample_bp import kpop, jpop

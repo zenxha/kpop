@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request
+from flask import Blueprint, render_template, jsonify, request, url_for
 import json, random
 with open('backgrounds.json') as file:
     backgroundJSON = json.load(file)
@@ -6,12 +6,24 @@ with open('backgrounds.json') as file:
 
 api = Blueprint('api', __name__ ,url_prefix='/api', static_folder="static", template_folder="templates")
 from model import Playlist
-@api.route('/all', methods = ["GET","POST"])
+
+
+@api.route('/')
 def index():
-    all = Playlist.query.all()
+    endpoints = {
+        url_for('api.all'): "Returns all user submitted playlist objects in the database",
+        url_for('api.randomPlaylist'): "Returns a random user submitted playlist object from the database",
+        "/api/playlists/{INTEGER}": "Returns a user submitted playlist object by ID from the database",
+        url_for('api.randomBackground'): "Returns a random url of one of the backgrounds used on the site"
+    }
+    return(jsonify(endpoints))
+
+@api.route('/playlists/all', methods = ["GET","POST"])
+def all():
+    all_playlists = Playlist.query.all()
     playlists = []
 
-    for item in all:
+    for item in all_playlists:
        
 
         appenditem = {
@@ -22,7 +34,7 @@ def index():
         }
         playlists.append(appenditem)
     return jsonify(playlists)
-@api.route('/random', methods = ["GET","POST"])
+@api.route('/playlists/random', methods = ["GET","POST"])
 def randomPlaylist():
     all = Playlist.query.all()
     playlists = []
@@ -38,7 +50,7 @@ def randomPlaylist():
 
     return jsonify(random.choice(playlists))
 
-@api.route('/playlist/<int:id>')
+@api.route('/playlists/<int:id>')
 def get_playlist(id):
     playlist = Playlist.query.filter_by(id=id).first()
     if playlist:
@@ -55,7 +67,7 @@ def get_playlist(id):
         return Response("No playlist with that id ", status=400)
 
 
-@api.route('/randombg', methods = ["GET","POST"])
+@api.route('/backgrounds/random', methods = ["GET","POST"])
 def randomBackground():
 
     return jsonify({'url': random.choice(bg)})

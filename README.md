@@ -1,4 +1,4 @@
-![image](https://discord.com/channels/783082777020203058/783082777020203061/852631976427257906)
+![image](http://owo.whats-th.is/BoLbteQ.jpg)
 # Kpop Music Site!
 Group Project for tri3!
 ### Links

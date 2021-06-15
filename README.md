@@ -14,15 +14,8 @@ Group Project for tri3!
 - Devam Shrivastava ID: #51984972
 - Eshaan Parlikar ID: #32022538
 
-### Assigned Tickets Progress (Overall progress linked [here](https://github.com/zenxha/kpop/projects/1))
+### How it's made
 
-|Member|Tickets|
-| --- | --- |
-|Eshaan|<ul><li>[Worked on setup of Blueprints](https://github.com/zenxha/kpop/blob/main/BlueprintsIndividual/sample_bp.py) Working on the setup of a top 5 songs section (Working with Chris)](https://github.com/zenxha/kpop/projects/1#card-57725161)</li><ul>|
-|Chris|<ul><li>[Worked on setup of Blueprints](https://github.com/zenxha/kpop/projects/1#card-57459631) [Working on setting up a regularly updated top 5 songs section (Working with Eshaan)](https://github.com/zenxha/kpop/projects/1#card-57725161)</li><ul>|
-|Devam|<ul><li>[Working on Database to store user information such as playlists](https://github.com/zenxha/kpop/projects/1#card-57721524)</li><ul>|
-|Komay|<ul><li>[Set up blueprints for the API and home of our website (worked on it with Chris)](https://github.com/zenxha/kpop/projects/1#card-57459631)</li><ul>|
-|Charlie|<ul><li>[Working on About Us Page](https://github.com/zenxha/kpop/projects/1#card-57725152)</li><ul>|
 
 
 ## Our Idea Including Support for Individuals (Routes, Blueprints etc.)

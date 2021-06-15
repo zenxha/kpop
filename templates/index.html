@@ -87,7 +87,7 @@
 <script type="text/javascript" async="" src="{{url_for('ks.static', filename='display.js')}}"></script>
 <script>
     const getPlaylist = () => {
-        $.getJSON('{{websiteurl}}' + '/api/random', (data) => {
+        $.getJSON('{{websiteurl}}' + '/api/playlists/random', (data) => {
         document.getElementById("playlist_credits_text").innerHTML = data.username
         document.getElementById("playlist_name").innerHTML = data.playlistname
         //document.getElementById("playlist_text").href = data.url

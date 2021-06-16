@@ -52,8 +52,6 @@ def index():
     background = random.choice(backgrounds)
     if request.method == "POST":
         playlistname = request.form["playlistname"]
-        if playlistname == "CURE":
-            return render_template('EaEggLabNav.html')
         username = request.form["username"]
         if username == "mort":
             return render_template('aboutus.html')
@@ -62,6 +60,12 @@ def index():
         db.session.add(submit)
         db.session.commit()
     return render_template("index.html", background=background, websiteurl=config['websiteURL'])
+
+
+@app.route('/minilab')
+def minilab():
+    return render_template('EaEggLabNav.html')
+
 
 @app.route('/browse')
 def browse():

@@ -46,14 +46,6 @@ db_init(app)
 backgrounds = backgroundJSON['backgrounds']
 
 pathForImages='./images/'
-def before_request():
-    g.user = None
-    if 'user' in session:
-        g.user = session['user']
-
-@app.route('/test')
-def test():
-    return render_template("temp.html")
 
 @app.route('/', methods=["POST", 'GET'])
 def index():
@@ -102,9 +94,6 @@ def project():
 @app.route('/about')
 def about():
     return render_template("aboutus.html")
-@app.route('/about2')
-def about2():
-    return render_template("about.html")
 
 @app.route('/rate')
 def rate():
@@ -135,10 +124,4 @@ def submit():
 
 
 
-@app.route('/images/<int:id>')
-def get_img(id):
-    img = Review.query.filter_by(id=id).first()
-    if not img:
-        return 'No img with that id', 200
 
-    return Response(img.img, mimetype=img.mimetype)

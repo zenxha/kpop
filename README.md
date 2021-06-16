@@ -16,14 +16,15 @@ Group Project for tri3!
 
 # How It's Made
 ## Theme Section (5pt)
-- [Quote Page](https://p3cowboys.nighthawkcodingsociety.com/quote/) (+0.5pt User interaction, +0.5pt Technical, +1pt Fun)
-    - Quote page demonstrates usage and display of [online APIs](https://github.com/TMarwah/P3Cowboys/blob/e641f16f5d17751b83b95b243ae1013c0167d6c7/main.py#L31)
-    - User can refresh the page to get a new response each time
-    - Quotes add to the theme of the project by giving users inspirational quotes to help with their buisness ideas
-- [Upload Page](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Allen/templates/upload.html) (+0.5pt User interaction, +0.5pt Technical, +1pt Fun)
-    - Upload page demonstrates usage and display of user interaction 
-    - User can upload their websites advertisement and then it will be viewable from the "Browse" page
-    - This relates to the theme as it is the main point of interaction for the advertisements to be posted
+- [Find Similar Songs Page](https://p3cowboys.nighthawkcodingsociety.com/quote/) (+0.5pt User interaction, +0.5pt Technical, +1pt Fun)
+    - This page demonstrates usage and display of [online APIs that take parametrs](https://github.com/zenxha/kpop/blob/main/view/komay/classes/getsongs.py#L20)
+    - User can input an Artist and the Track name as well as how they want the list sorted. The response displays song cards that the user can listen to. These cares provide info such as wear to listen and popularity info.
+    - As a music-focused site, this page helps users find new songs if they ever want new songs that are similar to the ones they are currently listening to
+- [Home page](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Allen/templates/upload.html) (+0.5pt User interaction, +0.5pt Technical, +1pt Fun)
+    - Has two functions. One, users can submit links to their spotify playlist that they want to share with the world.
+    - Two, they can browse through other users' random submitted spotify playlists with a click of a button 
+    - Using jquery [GET requests](https://github.com/zenxha/kpop/blob/main/templates/index.html#L90) to our own [API endpoint](https://github.com/zenxha/kpop/blob/main/view/api/app.py#L37-L51), we avoid having to refresh the page for new playlists by dynamically editing the DOM
+    - This relates to the theme as it allows users to share music with the world
 - Database (+0.5pt User interaction, +0.5pt Technical)
     - This code shows the database that takes the user input from the upload page and connects it to the browse page.
     - [Link to full code for app.py](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Allen/app.py)

@@ -47,50 +47,94 @@ Group Project for tri3!
 - Commercial (+2pt)
     - [Link to video](https://www.youtube.com/watch?v=XnYaSJoKWxE&ab_channel=Purplebears)
 # Code Explanations
-## Profile Page (Karam)
-- [Link to the app.py](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Karam/app.py)
-- [Link to full code for profile page](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Karam/templates/Dashboard.html) 
+## Home page: Displays random user submitted playlists on button click (Komay)
+- [Link to RUNTIME](http://rubinfamily.dyndns.org:5000/)
+- [Link to html and js code](https://github.com/zenxha/kpop/blob/main/templates/index.html#L1-L106) 
+```html
+            <div class="container justify-content-start" style="margin-right: -25%; padding-right:-35%; margin-top: 2%; margin-bottom: 1%;">
+                <button onclick="getPlaylist()" type="button" class="btn btn-info">Get random playlist</button>
+            </div>
+<script>
+    const getPlaylist = () => {
+        $.getJSON('{{websiteurl}}' + '/api/playlists/random', (data) => {
+        document.getElementById("playlist_credits_text").innerHTML = data.username
+        document.getElementById("playlist_name").innerHTML = data.playlistname
+        //document.getElementById("playlist_text").href = data.url
+        document.getElementById("playlist_text").innerHTML = data.url
+        document.getElementById("playlist_id").innerHTML = "Playlist ID: " + data.id
+        console.log(data)
+        });
+    }
+    const ee = () => {
+        console.log('ee')
+    }
+    console.log('hi')
+    function Open() {
+        window.open(document.getElementById("playlist_text").innerHTML, "_blank");
+    }
+</script>
 ```
-from flask import Blueprint, render_template, request
 
-from .karamminilab import Caracal, Characters, bubblesort
-
-Cowboys_Karam_bp = Blueprint('Cowboys_Karam', __name__,
-                               template_folder='templates',
-                               static_folder='static', static_url_path='assets')
-@Cowboys_Karam_bp.route("/")
-def upload():
-    return render_template ("homepage2.html")
-
-@Cowboys_Karam_bp.route("/karamminilab")
-def minilab():
-    caracals= [Caracal("skinny", "beige"), Caracal("fat", "brown")]
-    return render_template("karamminilab.html", caracals=caracals)
+## Finding similar song recommendations [API USE!] (Komay)
+- This code shows the API and code used to provide a well sorted list of songs similar to the one they type in that the user might enjoy 
+- [Link to backend used](https://github.com/zenxha/kpop/blob/main/view/komay/classes/getsongs.py).
+- [Link to routing of backend to frontend](https://github.com/zenxha/kpop/blob/main/view/komay/app.py)
+- [Link to runtime](http://rubinfamily.dyndns.org:5000/ks/)
 
 
-@Cowboys_Karam_bp.route("/karambubblesort.html", methods=["POST", "GET"])
-def qaracters():
-    if request.method == 'POST':
-        string = request.form.get('word')
-        word = str(string)
-        return render_template("karambubblesort.html", characters=Characters(word).characters)
-    return render_template("karambubblesort.html")
+API use Code
+```python
+import requests
+import json
+import os
 
 
-@Cowboys_Karam_bp.route("/otherubblesort", methods=["POST", "GET"])
-def minilabs():
-    if request.method == 'POST':
-        bubble = request.form.get('character')
-        return render_template("otherubblesort.html", output = bubblesort(bubble).bubblesort)
 
-    return render_template("otherubblesort.html")
+# http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=official+hige+dandism&track=pretender&api_key=630846faaf3ca8d5cf4d712e56bd4989&format=json
+class Song:
+    """Initializer of class takes song info parameters and returns Class Object"""
+
+    def __init__(self, artist, song, sorttype):
+        self._artist = artist
+        self._song = song
+        self._sorttype = sorttype
+
+    @property
+    def similar_songs_list(self):
+        artist_query_name = self._artist.replace(' ', '+')
+        song_query_name = self._song.replace(' ', '+')
+        response = requests.get('http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=' + artist_query_name + '&track=' + song_query_name + '&api_key=630846faaf3ca8d5cf4d712e56bd4989&format=json')
+        res = response.json()
+
+        res_array = []
+
+        if 'similartracks' in res:
+            for song in res['similartracks']['track']:
+                res_array.append(song)
 
 
-@Cowboys_Karam_bp.route("/Dashboard")
-def model():
-    return render_template("/Dashboard.html", model=model)
+            if (self._sorttype == 'playcount'):
+                res_array.sort(key=lambda x: x['playcount'], reverse=True)
+            if (self._sorttype == 'alphabetical'):
+                res_array.sort(key=lambda x: x['name'])
+            if self._sorttype == 'similarity':
+                res_array = res_array
+                print(self._sorttype)
 
-```
+            return res_array
+        else:
+            return [                {
+                "name": "Check your parameters again",
+                "playcount": 0,
+                "match": 0,
+                "url": "https://www.last.fm/music/Official+HIGE+DANdism/_/Shukumei",
+                "artist": {
+                    "name": "Invalid Artist Link",
+                    "url": "https://www.last.fm/music/Official+HIGE+DANdism"
+                },
+            }]
+ ```
+
 ## Login Page (Tanmay)
 - This code shows the login page that accepts a username and password then identifies the user
 - [Link to full code for app.py](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Tanmay/app.py)
@@ -141,6 +185,7 @@ def minilab():
     return render_template("tanmayminilab.html",wordcount = Counters(2).wordcount(),
                            lettercount = Counters(2).lettercount(), sorted = Counters(2).bubblesort())
 ```
+
 ## Database (Marc)
 - This code shows the database that takes the user input from the upload page and connects it to the browse page.
 - [Link to full code for app.py](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Allen/app.py)

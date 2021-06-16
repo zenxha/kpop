@@ -215,7 +215,11 @@
         console.log(data)
         });
         */
-        $('header').css('background', `linear-gradient(rgba(103, 135, 211, .6), rgba(144, 25, 166, .6)), url("https://www.wallpapertip.com/wmimgs/0-8294_jungkook-bts-boy-with-luv-4k-bts-jungkook.jpg") no-repeat center center fixed`)
+       wallpapers = ['https://wallpaperaccess.com/full/652814.jpg','https://www.wallpapertip.com/wmimgs/0-8294_jungkook-bts-boy-with-luv-4k-bts-jungkook.jpg',
+                    'https://2.bp.blogspot.com/-m0acT7zabTQ/XLJFePhrUnI/AAAAAAAAFSc/JvNbDJFeLxUV6wDQKSy8bnz5NxUjBy1BQCKgBGAs/w2560-h1440-c/suga-bts-boy-with-luv-uhdpaper.com-4K-53.jpg',
+                    'https://wallpaperaccess.com/full/1627574.jpg', 'https://wallpaperaccess.com/full/724668.jpg', 'https://www.teahub.io/photos/full/66-664605_jungkook-bts-boy-with-luv-4k-jungkook-wallpaper.jpg',
+                'https://wallpaperaccess.com/full/856565.jpg']
+        $('header').css('background', `linear-gradient(rgba(103, 135, 211, .6), rgba(144, 25, 166, .6)), url("${wallpapers[Math.floor(Math.random()*wallpapers.length)]}") no-repeat center center fixed`)
         
     }
 </script>

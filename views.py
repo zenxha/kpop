@@ -97,7 +97,7 @@ def project():
 
 @app.route('/about')
 def about():
-    return render_template("aboutus.html")
+    return render_template("aboutus.html", background=random.choice(backgrounds))
 
 @app.route('/rate')
 def rate():

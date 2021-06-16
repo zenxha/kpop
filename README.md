@@ -136,55 +136,79 @@ class Song:
             }]
  ```
 
-## Login Page (Tanmay)
-- This code shows the login page that accepts a username and password then identifies the user
-- [Link to full code for app.py](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Tanmay/app.py)
-- [Link for login page](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Tanmay/templates/login.html)
+## Home Page CSS(Chris)
+- This CSS organizes the webpage to include a submit form and the card that Komay uses
+- [Link to full css code for index.html](https://github.com/zenxha/kpop/blob/main/static/formstyle.css)
+- [Link for home page html file](https://github.com/zenxha/kpop/blob/main/templates/index.html)
 ```
-from flask import Blueprint
-from flask import render_template, request
-from Cowboys.Tanmay.tanmayminilab import  Counters
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-sm-4">
+            <div class="container justify-content-start" style="margin-right: -25%; padding-right:-35%; margin-top: 2%; margin-bottom: 1%;">
+                <button onclick="getPlaylist()" type="button" class="btn btn-info">Get random playlist</button>
+            </div>
+            <div class="card text-white card-has-bg click-col mx-auto" id="playlist_card" href="#" >
+                <img class="card-img d-none" src="https://source.unsplash.com/600x900/?computer,design" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+                <div class="card-img-overlay d-flex flex-column">
+                    <div class="card-body">
+                        <small class="card-meta mb-2" id="playlist_id" >Playlist ID:</small>
+                        <h4 class="card-title mt-0" id="playlist_name">Click the button to get a playlist!<a class="text-white" href="#"></a></h4>
 
-Cowboys_Tanmay_bp = Blueprint('Cowboys_Tanmay', __name__,
-                              template_folder='templates',
-                              static_folder='static', static_url_path='assets')
+                        <a onclick="Open()" id="playlist_text"></a>
+                    </div>
+                    <div class="card-footer">
+                        <div class="media">
+                            <img class="mr-3 rounded-circle" src="https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg" alt="Generic placeholder image" style="max-width:50px">
+                            <div class="media-body">
+                                <h6 class="my-0 text-white d-block">Submitted by</h6>
+                                <h6 id="playlist_credits_text"></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></div>
+    </div>
+    <div class="row justify-content-start">
+        <div class="col-md-12">
+            <body data-new-gr-c-s-check-loaded="14.1012.0" data-gr-ext-installed="">
+                    <div class="container-contact2" style="margin-left:-20%; margin-top: -42%;min-height: 500px;width: 60%;" >
+                        <div class="wrap-contact2">
+                            <form class="contact2-form validate-form" name="playlistform" method='post' onsubmit="return validate()" >
+                            <span class="contact2-form-title">
+                                Submit your playlist
+                            </span>
 
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
+                                <div class="wrap-input2 validate-input" data-validate="Playlist Name is Required">
+                                    <input class="input2" type="text" name="playlistname" id="playlistname" required>
+                                    <span class="focus-input2" data-placeholder="Playlist Name"></span>
 
-@Cowboys_Tanmay_bp.route('/login', methods=["POST", "GET"])
-def login_route():
-    logform = LoginForm()
-    if logform.validate_on_submit():
-        user = User.query.filter_by(username=logform.username.data).first()
-        if user is None or not user.check_password(logform.password.data):
-            flash("Login Failed")
-            return redirect("/login")
-        login_user(user)
-        flash("Login Successful!")
-        if logform.username.data == "secret":
-            return redirect("/secret")
-        nextpage = request.args.get("next")
-        if not nextpage or url_parse(nextpage).netloc != '':
-            return redirect('/')
-        return redirect(nextpage)
-    else:
-        return render_template("login.html", form = logform)
+                                </div>
 
-@Cowboys_Tanmay_bp.route('/minilab', methods=["POST", "GET"])
-def minilab():
-    if(request.method == 'POST'):
-        sentence = request.form.get('sentence')
-        sentencesort = request.form.get('sentencesort')
-        input = sentence
-        input2 = sentencesort
-        return render_template("tanmayminilab.html",wordcount = Counters(input).wordcount(),
-                               lettercount = Counters(input).lettercount(), sorted = Counters(input2).bubblesort())
+                                <div class="wrap-input2 validate-input" data-validate="">
+                                    <input class="input2" type="text" name="username" id="username" required>
+                                    <span class="focus-input2" data-placeholder="Your Username"></span>
+                                </div>
 
-    return render_template("tanmayminilab.html",wordcount = Counters(2).wordcount(),
-                           lettercount = Counters(2).lettercount(), sorted = Counters(2).bubblesort())
+                                <div class="wrap-input2 validate-input" data-validate="Playlist URL is Required">
+                                    <textarea class="input2" name="url" required></textarea>
+                                    <span class="focus-input2" data-placeholder="https://open.spotify.com/playlist/4CuSTeoPQlN3ltgbaJCfrX?si=ab3d0295bc334f69"></span>
+                                </div>
+
+                                <div class="container-contact2-form-btn">
+                                    <div class="wrap-contact2-form-btn">
+                                        <div class="contact2-form-bgbtn"></div>
+                                        <button class="contact2-form-btn">
+                                            Submit Playlist
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </body>
+        </div>
+    </div>
+</div>
 ```
 
 ## Database (Marc)

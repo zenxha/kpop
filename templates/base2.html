@@ -210,10 +210,12 @@
 
 <script>
     const changeBackground = () => {
-        $.getJSON('{{websiteurl}}' + '/api/randombg', (data) => {
-            $('header').css('background', `linear-gradient(rgba(103, 135, 211, .6), rgba(144, 25, 166, .6)), url(${data.url}) no-repeat center center fixed`)
+       /* $.getJSON('{{websiteurl}}' + '/api/randombg', (data) => {
+            $('header').css('background', `linear-gradient(rgba(103, 135, 211, .6), rgba(144, 25, 166, .6)), url("${data.url}") no-repeat center center fixed`)
         console.log(data)
         });
+        */
+        $('header').css('background', `linear-gradient(rgba(103, 135, 211, .6), rgba(144, 25, 166, .6)), url("https://www.wallpapertip.com/wmimgs/0-8294_jungkook-bts-boy-with-luv-4k-bts-jungkook.jpg") no-repeat center center fixed`)
         
     }
 </script>

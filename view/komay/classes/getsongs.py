@@ -2,12 +2,6 @@ import requests
 import json
 import os
 
-""" devam get ur stuff OUTTA HERE devam get ur stuff OUTTA HERE devam get ur stuff OUTTA HERE 
-devam get ur stuff OUTTA HERE devam get ur stuff OUTTA HERE devam get ur stuff OUTTA HERE devam get ur stuff OUTTA HERE
-import google_auth_oauthlib.flow
-import googleapiclient.discovery
-import googleapiclient.errors
-"""
 
 
 # http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=official+hige+dandism&track=pretender&api_key=630846faaf3ca8d5cf4d712e56bd4989&format=json

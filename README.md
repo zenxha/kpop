@@ -314,7 +314,7 @@ def index():
 ```
 ## Rating Page (Eshaan)
 - The HTML and CSS used here create a page where users can give ratings for the website.
-- [Runtime](http://rubinfamily.dyndns.org:5000/rate)
+- [Runtime](https://kpop.nighthawkcodingsociety.com/rate)
 - [CSS](https://github.com/zenxha/kpop/blob/main/templates/rate.html#L55-L193) that includes font API and hover mechanism
 - [HTML](https://github.com/zenxha/kpop/blob/main/templates/rate.html#L1-L54) that creates outline for stars
 - [Route](https://github.com/zenxha/kpop/blob/main/views.py#L102-L104) to page

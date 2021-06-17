@@ -147,7 +147,7 @@ class Song:
 - This CSS organizes the webpage to include a submit form and the card that Komay uses
 - [Link to full css code for index.html](https://github.com/zenxha/kpop/blob/main/static/formstyle.css)
 - [Link for home page html file](https://github.com/zenxha/kpop/blob/main/templates/index.html)
-```
+```html
 <div class="container">
     <div class="row justify-content-end">
         <div class="col-sm-4">
@@ -218,7 +218,7 @@ class Song:
 - [Dataslides](https://github.com/zenxha/kpop/blob/main/templates/aboutus.html#L28-L34) are used to allow users easy and smooth access to all profiles.
 - [Javascript/Styling](https://github.com/zenxha/kpop/blob/main/templates/aboutus.html#L99-L139) is placed near the bottom, where it helps enhance the page's visuals
 - [Route](https://github.com/zenxha/kpop/blob/main/views.py#L98-L100) that leads to this page
-```
+```html
 {% extends "base2.html" %}
 {% block header %}
 

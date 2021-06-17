@@ -145,72 +145,24 @@ class Song:
 
 ## Home Page CSS(Chris)
 - This CSS organizes the webpage to include a submit form and the card that Komay uses
-- [Link to full css code for index.html](https://github.com/zenxha/kpop/blob/main/static/formstyle.css)
-- [Link for home page html file](https://github.com/zenxha/kpop/blob/main/templates/index.html)
-```html
-<div class="container">
-    <div class="row justify-content-end">
-        <div class="col-sm-4">
-            <div class="container justify-content-start" style="margin-right: -25%; padding-right:-35%; margin-top: 2%; margin-bottom: 1%;">
-                <button onclick="getPlaylist()" type="button" class="btn btn-info">Get random playlist</button>
-            </div>
-            <div class="card text-white card-has-bg click-col mx-auto" id="playlist_card" href="#" >
-                <img class="card-img d-none" src="https://source.unsplash.com/600x900/?computer,design" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
-                <div class="card-img-overlay d-flex flex-column">
-                    <div class="card-body">
-                        <small class="card-meta mb-2" id="playlist_id" >Playlist ID:</small>
-                        <h4 class="card-title mt-0" id="playlist_name">Click the button to get a playlist!<a class="text-white" href="#"></a></h4>
-                        <a onclick="Open()" id="playlist_text"></a>
-                    </div>
-                    <div class="card-footer">
-                        <div class="media">
-                            <img class="mr-3 rounded-circle" src="https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg" alt="Generic placeholder image" style="max-width:50px">
-                            <div class="media-body">
-                                <h6 class="my-0 text-white d-block">Submitted by</h6>
-                                <h6 id="playlist_credits_text"></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div></div>
-    </div>
-    <div class="row justify-content-start">
-        <div class="col-md-12">
-            <body data-new-gr-c-s-check-loaded="14.1012.0" data-gr-ext-installed="">
-                    <div class="container-contact2" style="margin-left:-20%; margin-top: -42%;min-height: 500px;width: 60%;" >
-                        <div class="wrap-contact2">
-                            <form class="contact2-form validate-form" name="playlistform" method='post' onsubmit="return validate()" >
-                            <span class="contact2-form-title">
-                                Submit your playlist
-                            </span>
-                                <div class="wrap-input2 validate-input" data-validate="Playlist Name is Required">
-                                    <input class="input2" type="text" name="playlistname" id="playlistname" required>
-                                    <span class="focus-input2" data-placeholder="Playlist Name"></span>
-                                </div>
-                                <div class="wrap-input2 validate-input" data-validate="">
-                                    <input class="input2" type="text" name="username" id="username" required>
-                                    <span class="focus-input2" data-placeholder="Your Username"></span>
-                                </div>
-                                <div class="wrap-input2 validate-input" data-validate="Playlist URL is Required">
-                                    <textarea class="input2" name="url" required></textarea>
-                                    <span class="focus-input2" data-placeholder="https://open.spotify.com/playlist/4CuSTeoPQlN3ltgbaJCfrX?si=ab3d0295bc334f69"></span>
-                                </div>
-                                <div class="container-contact2-form-btn">
-                                    <div class="wrap-contact2-form-btn">
-                                        <div class="contact2-form-bgbtn"></div>
-                                        <button class="contact2-form-btn">
-                                            Submit Playlist
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-            </body>
-        </div>
-    </div>
-</div>
+- [runtime](http://rubinfamily.dyndns.org:5000/)
+- [Link for homepage playlist submit form](https://github.com/zenxha/kpop/blob/main/views.py#L52-L61)
+``` py
+@app.route('/', methods=["POST", 'GET'])
+def index():
+    background = random.choice(backgrounds)
+    if request.method == "POST":
+        playlistname = request.form["playlistname"]
+        username = request.form["username"]
+        if username == "mort":
+            return render_template('aboutus.html')
+        url = request.form["url"]
+        submit = Playlist(playlistname=playlistname, username=username, url=url)
+        db.session.add(submit)
+        db.session.commit()
+    return render_template("index.html", background=background, websiteurl=config['websiteURL'])
 ```
+
 
 ## About The Creators (Charlie)
 - This code shows the page that users can access to find out more about the creators.

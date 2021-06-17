@@ -207,52 +207,153 @@ class Song:
 </div>
 ```
 
-## Database (Marc)
-- This code shows the database that takes the user input from the upload page and connects it to the browse page.
-- [Link to full code for app.py](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Allen/app.py)
-- [Link to database setup part 1](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Allen/model.py)
-- [Link to database setup part 2](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Allen/db.py)
-- [Link for browse page](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Allen/templates/browse.html)
+## About The Creators (Charlie)
+- This code shows the page that users can access to find out more about the creators.
+- [Runtime](http://rubinfamily.dyndns.org:5000/about)
+- [Dataslides](https://github.com/zenxha/kpop/blob/main/templates/aboutus.html#L28-L34) are used to allow users easy and smooth access to all profiles.
+- [Javascript/Styling](https://github.com/zenxha/kpop/blob/main/templates/aboutus.html#L99-L139) is placed near the bottom, where it helps enhance the page's visuals
+- [Route](https://github.com/zenxha/kpop/blob/main/views.py#L98-L100) that leads to this page
 ```
-@Cowboys_minilab1_bp.route('/cowboys/minilab1/browse')
-def browse():
-    backgrounds = ["https://cdn.discordapp.com/attachments/784178874303905792/818606015494094868/812382.png"]
-    review_query = Review.query.all()
-    reviews = []
+{% extends "base2.html" %}
+{% block header %}
 
-    for review in review_query:
-        websiteurl = url_for('get_img', id=review.id)
+<!-- ABOUT US -->
+<!-- body -->
+<div class="main-layout" style="background-color:transparent;">
 
-        review_dict = {
-            'id': review.id,
-            'username': review.username,
-            'content': review.content,
-            'image':  websiteurl
-        }
-        reviews.append(review_dict)
-    return render_template("browse.html", reviews=reviews, background=random.choice(backgrounds))
-    
-@Cowboys_minilab1_bp.route('/cowboys/minilab1/upload', methods=["POST", 'GET'])
-def upload():
-    background = random.choice(backgrounds)
-    if request.method == "POST":
-        name = request.form["username"]
-        content = request.form["content"]
-        image = request.files.get('img')
-        if not image:
-            return 'bad news ur image did not make it to our servers :((((', 400
+    <!--Our  Clients -->
+    <div id="plant" class="section_Clients layout_padding padding_bottom_0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="titlepage" style="color: white; padding-top: 5%;">
+                        <h2> About The Creators</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section Clients_2 layout_padding padding-top_0">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
 
-        filename = secure_filename(image.filename)
-        mimetype = image.mimetype
-        if not filename or not mimetype:
-            return 'Bad upload', 400
+                    <div id="testimonial" class="carousel slide" data-ride="carousel">
 
-        review = Review(username=name, content=content, img=image.read(), filename=filename, mimetype=mimetype)
-        db.session.add(review)
-        db.session.commit()
-        return redirect(url_for("browse.html"))
-    return render_template("upload.html", background=background)
-    
+                        <!-- Indicators -->
+                        <ul class="carousel-indicators">
+                            <li data-target="#testimonial" data-slide-to="0" class="active"></li>
+                            <li data-target="#testimonial" data-slide-to="1"></li>
+                            <li data-target="#testimonial" data-slide-to="2"></li>
+                            <li data-target="#testimonial" data-slide-to="3"></li>
+                            <li data-target="#testimonial" data-slide-to="4"></li>
+                        </ul>
+
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="titlepage">
+                                    <div class="john">
+                                        <div class="john_image"><img src="/static/images/czpfp.gif" style="max-width:100%; padding-left: 40%;"></div>
+                                        <div class="john_text" style="color: white">Charlie Zhu</div>
+                                        <p class="lorem_ipsum_text" style="color: white">"I am a junior at Del Norte High School. I was born in San Diego
+                                            and am currently 16 years old. I have an older sister who is in college.
+                                            Some things I like to do in my free time are play video games and run."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="titlepage">
+                                    <div class="john">
+                                        <div class="john_image"><img src="https://media1.tenor.com/images/14de8c9e35e27ac8e91f532e8d079677/tenor.gif?itemid=17355571" style="max-width:100%; padding-left: 30%;"></div>
+                                        <div class="john_text" style="color: white">Komay Sugiyama</div>
+                                        <p class="lorem_ipsum_text" style="color: white">"I am a 17 year old Junior at Del Norte High School. I also really like music. My favorite geners are R&B, Jazz, jpop, kpop, indie, rock, funk, soul and hiphop. My favorite band is Official HIGE DANdism, you should check them out too"</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="titlepage">
+                                    <div class="john">
+                                        <div class="john_image"><img src="/static/images/devampfp.gif" style="max-width:100%; padding-left: 35%;"></div>
+                                        <div class="john_text" style="color: white">Devam Shrivastava</div>
+                                        <p class="lorem_ipsum_text" style="color: white">"I am a junior at Del Norte High School. I am 17 years old and I was born in Scripps Ranch. In my free time I like to watch anime and play video games with my friends. My favorite anime is Jujutsu Kaisen."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="titlepage">
+                                    <div class="john">
+                                        <div class="john_image"><img src="/static/images/Chris.png" style="max-width:100%; padding-left: 40%;"></div>
+                                        <div class="john_text" style="color: white">Chris Rubin</div>
+                                        <p class="lorem_ipsum_text" style="color: white">"I am a junior at Del Norte High School. I am 18 years old and I was born in Pomerado. I have 10 siblings, 6 sisters and 4 brothers. Four of them have graduated from college and two of them are in college currently. In my free time I like playing video games, hanging out with friends, skateboarding, watching anime, and my favorite anime is Black Clover."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="titlepage">
+                                    <div class="john">
+                                        <div class="john_image"><img src="/static/images/deeppfp.png" style="max-width:100%; padding-left: 40%;"></div>
+                                        <div class="john_text" style="color: white">Eshaan Parlikar</div>
+                                        <p class="lorem_ipsum_text" style="color: white">"I am a 17 year old junior at Del Norte High School who was born in San Diego. I have two older sisters, one who currently attends Abraxas and the other recently graduating from NYU with a politics major. Currently, I enjoy playing video games and drumming, and my favorite anime is Fullmetal Alchemist: Brotherhood."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#testimonial" data-slide="prev"><span class="carousel-control-prev-icon"></span></a> <a class="carousel-control-next" href="#testimonial" data-slide="next"><span class="carousel-control-next-icon"></span></a></div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- end Our  Clients -->
+<!-- END OF ABOUT US -->
+<!-- Javascript files-->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="js/plugin.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- sidebar -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/custom.js"></script>
+<!-- javascript -->
+<script src="js/owl.carousel.js"></script>
+<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".fancybox").fancybox({
+            openEffect: "none",
+            closeEffect: "none"
+        });
+
+        $(".zoom").hover(function(){
+
+            $(this).addClass('transition');
+        }, function(){
+
+            $(this).removeClass('transition');
+        });
+    });
+
+</script>
+</div>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</div>
+<style>
+    body,html{
+        overflow-y: hidden;
+    }
+</style>
+{% endblock %}
 ```
 ## Feedback Page (Billy)
 - This code snippet shows the Usage of Get and Post to retrieve feedback and post it on the response page.

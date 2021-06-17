@@ -145,7 +145,7 @@ class Song:
 
 ## Home Page CSS(Chris)
 - This code shows the backend of the form on the home page of the kpop website, which users can see results on anohter part of the index page
-- [runtime](http://rubinfamily.dyndns.org:5000/)
+- [runtime](https://kpop.nighthawkcodingsociety.com/)
 - [Link for homepage playlist submit form](https://github.com/zenxha/kpop/blob/main/views.py#L52-L61)
 ``` py
 @app.route('/', methods=["POST", 'GET'])

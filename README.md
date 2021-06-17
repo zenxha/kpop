@@ -2,7 +2,7 @@
 # Kpop Music Site!
 Group Project for tri3!
 ### Links
-- [Project Board](https://github.com/zenxha/kpop/projects/1)
+- [Project Board](https://github.com/zenxha/kpop/projects/1) | [Project Board last 3 weeks](https://github.com/zenxha/kpop/projects/2)
 - [Deployed Website](http://rubinfamily.dyndns.org:5000/)
 - [Deployed Webiste ON TEACHER HARDWARE](https://kpop.nighthawkcodingsociety.com/)
 - [Project Plan](https://docs.google.com/document/d/19tdgx0iDYYwwMcTxbIoo4nPW9igqUoKptFVv5eDoNms/edit)

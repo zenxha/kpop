@@ -4,7 +4,7 @@ Group Project for tri3!
 ### Links
 - [Project Board](https://github.com/zenxha/kpop/projects/1)
 - [Deployed Website](http://rubinfamily.dyndns.org:5000/)
-- [Deployed Webiste ON TEACHER HARDWARE(https://kpop.nighthawkcodingsociety.com/)
+- [Deployed Webiste ON TEACHER HARDWARE](https://kpop.nighthawkcodingsociety.com/)
 - [Project Plan](https://docs.google.com/document/d/19tdgx0iDYYwwMcTxbIoo4nPW9igqUoKptFVv5eDoNms/edit)
 - [Folder Containing Justifications for Minilab](https://drive.google.com/drive/u/1/folders/1rY2DlSWzvpxBbPOH8zE3hpo2-O9kGwoX)
 

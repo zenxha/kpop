@@ -53,7 +53,7 @@ Group Project for tri3!
 - How It's Made section (+2pt How Its Made, +1pt Visuals)
     - Located in readme, section is labled How Its Made, is what you are currently looking at
 - Commercial (+2pt)
-    - [Link to video](https://www.youtube.com/watch?v=XnYaSJoKWxE&ab_channel=Purplebears)
+    - [Link to video](https://www.youtube.com/watch?v=wpCmiDVF604)
 # Code Explanations
 ## Home page: Displays random user submitted playlists on button click (Komay)
 - [Link to RUNTIME](https://kpop.nighthawkcodingsociety.com/ks/)

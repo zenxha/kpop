@@ -360,6 +360,207 @@ class Song:
 </style>
 {% endblock %}
 ```
+## Rating Page (Eshaan)
+- The HTML and CSS used here create a page where users can give ratings for the website.
+- [Runtime](http://rubinfamily.dyndns.org:5000/rate)
+- [CSS](https://github.com/zenxha/kpop/blob/main/templates/rate.html#L55-L193) that includes font API and hover mechanism
+- [HTML](https://github.com/zenxha/kpop/blob/main/templates/rate.html#L1-L54) that creates outline for stars
+- [Route](https://github.com/zenxha/kpop/blob/main/views.py#L102-L104) to page
+```html
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Rate our website!</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+<div class="container">
+  <div class="post">
+    <div class="text">
+      Thanks for rating us!
+    </div>
+    <div class="edit">
+
+    </div>
+  </div>
+  <div class="star-widget">
+    <input type="radio" name="rate" id="rate-5">
+    <label for="rate-5" class="fas fa-star"></label>
+    <input type="radio" name="rate" id="rate-4">
+    <label for="rate-4" class="fas fa-star"></label>
+    <input type="radio" name="rate" id="rate-3">
+    <label for="rate-3" class="fas fa-star"></label>
+    <input type="radio" name="rate" id="rate-2">
+    <label for="rate-2" class="fas fa-star"></label>
+    <input type="radio" name="rate" id="rate-1">
+    <label for="rate-1" class="fas fa-star"></label>
+    <form action="#">
+      <header></header>
+      <div class="textarea">
+        <textarea cols="30" placeholder="Describe your experience.."></textarea>
+        <br />
+        <div class="btn">
+          <button type="submit">Post</button>
+        </div>
+        <script>
+         const btn = document.querySelector("button");
+         const post = document.querySelector(".post");
+         const widget = document.querySelector(".star-widget");
+         const editBtn = document.querySelector(".edit");
+         btn.onclick = ()=>{
+           widget.style.display = "none";
+           post.style.display = "block";
+           editBtn.onclick = ()=>{
+             widget.style.display = "block";
+             post.style.display = "none";
+           }
+           return false;
+         }
+      </script>
+</body>
+</html>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html,body{
+    display: grid;
+    height: 100%;
+    place-items: center;
+    text-align: center;
+    background: #000;
+}
+.container{
+    position: relative;
+    width: 400px;
+    background: #111;
+    padding: 20px 30px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container .post{
+    display: none;
+}
+.container .text{
+    font-size: 25px;
+    color: #666;
+    font-weight: 500;
+}
+.container .edit{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+    cursor: pointer;
+}
+.container .edit:hover{
+    text-decoration: underline;
+}
+.container .star-widget input{
+    display: none;
+}
+.star-widget label{
+    font-size: 40px;
+    color: #444;
+    padding: 10px;
+    float: right;
+    transition: all 0.2s ease;
+}
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+    color: #fd4;
+}
+input:checked ~ label{
+    color: #fd4;
+}
+input#rate-5:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #952;
+}
+#rate-1:checked ~ form header:before{
+    content: "Immediate update needed! ";
+}
+#rate-2:checked ~ form header:before{
+    content: "Lacks some features or is a little too buggy. ";
+}
+#rate-3:checked ~ form header:before{
+    content: "It's alright, nothing too special.";
+}
+#rate-4:checked ~ form header:before{
+    content: "Pretty good, but I wish there was one more thing.";
+}
+#rate-5:checked ~ form header:before{
+    content: "It's perfect! ";
+}
+.container form{
+    display: none;
+}
+input:checked ~ form{
+    display: block;
+}
+form header{
+    width: 100%;
+    font-size: 25px;
+    color: #fe7;
+    font-weight: 500;
+    margin: 5px 0 20px 0;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+form .textarea{
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+form .textarea textarea{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #eee;
+    border: 1px solid #333;
+    background: #222;
+    padding: 10px;
+    font-size: 17px;
+    resize: none;
+}
+.textarea textarea:focus{
+    border-color: #444;
+}
+form .btn{
+    height: 45px;
+    width: 100%;
+    margin: 15px 0;
+}
+form .btn button{
+    height: 100%;
+    width: 100%;
+    border: 1px solid #444;
+    outline: none;
+    background: #222;
+    color: #999;
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+form .btn button:hover{
+    background: #1b1b1b;
+}
+</style>
+```
 ## Feedback Page (Billy)
 - This code snippet shows the Usage of Get and Post to retrieve feedback and post it on the response page.
 - [Link to full code of app.py](https://github.com/TMarwah/P3Cowboys/blob/19fdd8cef62f8a8a662cf7a78a3730db92d346da/Cowboys/William/app.py#L1-L75)(Connects feedback/response pages together using Get and Post)
@@ -376,8 +577,6 @@ def feedback():
         return render_template("response.html", name=name, comment=comment, input1=input1, input2=input2)
     return render_template("feedback.html")
 ```
-
-
 
 
 ## Our Idea Including Support for Individuals (Routes, Blueprints etc.)

@@ -186,6 +186,25 @@ class Song:
                                     <input class="input2" type="text" name="username" id="username" required>
                                     <span class="focus-input2" data-placeholder="Your Username"></span>
                                 </div>
+                                <div class="wrap-input2 validate-input" data-validate="Playlist URL is Required">
+                                    <textarea class="input2" name="url" required></textarea>
+                                    <span class="focus-input2" data-placeholder="https://open.spotify.com/playlist/4CuSTeoPQlN3ltgbaJCfrX?si=ab3d0295bc334f69"></span>
+                                </div>
+                                <div class="container-contact2-form-btn">
+                                    <div class="wrap-contact2-form-btn">
+                                        <div class="contact2-form-bgbtn"></div>
+                                        <button class="contact2-form-btn">
+                                            Submit Playlist
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </body>
+        </div>
+    </div>
+</div>
 ```
 
 ## Database (Marc)

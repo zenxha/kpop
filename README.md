@@ -41,8 +41,8 @@ Group Project for tri3!
 - Technicals (+1pt 2 Technicals)
     - Each minilab utilizes [classes](https://github.com/zenxha/kpop/blob/main/view/komay/classes/getsongs.py) in order to pass in [parameters](https://github.com/zenxha/kpop/blob/main/view/komay/classes/getsongs.py#L11) that cause different functions to run 
     - 
-## API Section (3pt)
-- [API Endpoints](https://kpop.nighthawkcodingsociety.com/api/) (+2 Receiving  API, +2 Developing own endpoints)
+## API Section (4pt)
+- [API Endpoints](https://kpop.nighthawkcodingsociety.com/api/) (+2 [Receiving](https://github.com/zenxha/kpop/blob/main/view/komay/classes/getsongs.py#L20)  API, +2 Developing own endpoints)
 - ![image](http://owo.whats-th.is/8NTno86.png)
     - [Source Code](https://github.com/zenxha/kpop/blob/main/view/api/app.py)
     - API serves data that drives our site to anyone in the form of JSON

@@ -4,6 +4,7 @@ Group Project for tri3!
 ### Links
 - [Project Board](https://github.com/zenxha/kpop/projects/1)
 - [Deployed Website](http://rubinfamily.dyndns.org:5000/)
+- [Deployed Webiste ON TEACHER HARDWARE(https://kpop.nighthawkcodingsociety.com/)
 - [Project Plan](https://docs.google.com/document/d/19tdgx0iDYYwwMcTxbIoo4nPW9igqUoKptFVv5eDoNms/edit)
 - [Folder Containing Justifications for Minilab](https://drive.google.com/drive/u/1/folders/1rY2DlSWzvpxBbPOH8zE3hpo2-O9kGwoX)
 
@@ -16,11 +17,12 @@ Group Project for tri3!
 
 # How It's Made
 ## Theme Section (5pt)
-- [Find Similar Songs Page](https://p3cowboys.nighthawkcodingsociety.com/quote/) (+0.5pt User interaction, +0.5pt Technical, +1pt Fun)
+- [Find Similar Songs Page](https://kpop.nighthawkcodingsociety.com/ks) (+0.5pt User interaction, +0.5pt Technical, +1pt Fun)
     - This page demonstrates usage and display of [online APIs that take parametrs](https://github.com/zenxha/kpop/blob/main/view/komay/classes/getsongs.py#L20)
     - User can input an Artist and the Track name as well as how they want the list sorted. The response displays song cards that the user can listen to. These cares provide info such as wear to listen and popularity info.
     - As a music-focused site, this page helps users find new songs if they ever want new songs that are similar to the ones they are currently listening to
-- [Home page](https://github.com/TMarwah/P3Cowboys/blob/main/Cowboys/Allen/templates/upload.html) (+0.5pt*2 User interaction, +0.5pt Technical, +1pt Fun)
+- [Home page](https://kpop.nighthawkcodingsociety.com/) (+0.5pt*2 User interaction, +0.5pt Technical, +1pt Fun)
+    - [Source Code](https://github.com/zenxha/kpop/blob/main/templates/index.html) Bootstrap use.
     - Has TWO user interactions. One, users can submit links to their spotify playlist that they want to share with the world.
     - Two, they can browse through other users' random submitted spotify playlists with the click of a button 
     - Using jquery [GET requests](https://github.com/zenxha/kpop/blob/main/templates/index.html#L90) to our own [API endpoint](https://github.com/zenxha/kpop/blob/main/view/api/app.py#L37-L51), we avoid having to refresh the page for new playlists by dynamically editing the DOM
@@ -35,15 +37,18 @@ Group Project for tri3!
     - Serves as our API that other teams can use for crossover
 ## Individual Section (4.5pt)
 - Blueprints (+4pt 4 labs)
-    - [Each folder](https://github.com/TMarwah/P3Cowboys/tree/e641f16f5d17751b83b95b243ae1013c0167d6c7/Cowboys) is labled with the corresponding member to indicate their individual blueprint
+    - [Each folder](https://github.com/zenxha/kpop/tree/main/view) is labled with the corresponding member to indicate their individual blueprint
 - Technicals (+1pt 2 Technicals)
-    - Each minilab utilizes [classes](https://github.com/TMarwah/P3Cowboys/blob/c44d5b580d1db0821e71453ef1be321120e6a9fd/Cowboys/Allen/minilab1.py#L2-L32) in order to pass in [parameters](https://github.com/TMarwah/P3Cowboys/blob/c44d5b580d1db0821e71453ef1be321120e6a9fd/Cowboys/Allen/app.py#L130) that cause different functions to run 
+    - Each minilab utilizes [classes](https://github.com/zenxha/kpop/blob/main/view/komay/classes/getsongs.py) in order to pass in [parameters](https://github.com/zenxha/kpop/blob/main/view/komay/classes/getsongs.py#L11) that cause different functions to run 
     - 
 ## API Section (3pt)
-- [API and Receiving](https://p3cowboys.nighthawkcodingsociety.com/quote/) (+2 Receive and API, +1 Visual)
-    - API for quotes is used [here](https://github.com/TMarwah/P3Cowboys/blob/e641f16f5d17751b83b95b243ae1013c0167d6c7/main.py#L31) and the author and quote is stored as jinja variables
-    - Jinja variables are then displayed on the front end [here](https://github.com/TMarwah/P3Cowboys/blob/d829f25775a369d12d43b9ad72c38f556e9b9064/templates/quotepage.html#L140-L150)
-    - Used png of quotes to emphasize the quote and highlighted text to be easily seen, with author cited at bottom right as well
+- [API Endpoints](https://kpop.nighthawkcodingsociety.com/api/) (+2 Receive and API, +1 Visual)
+- ![image](http://owo.whats-th.is/8NTno86.png)
+    - [Source Code](https://github.com/zenxha/kpop/blob/main/view/api/app.py)
+    - API serves data that drives our site to anyone in the form of JSON
+    - API for finding songs is used [here](https://github.com/zenxha/kpop/blob/main/view/komay/classes/getsongs.py#L20-L38) and song data is stored as a class attribute in a jinja variable
+    - Jinja variables are then displayed on the front end [here](https://github.com/zenxha/kpop/blob/main/view/komay/templates/getsongs.html#L51-L63)
+    - We used our own API a lot of the times when using jquery ajax
 ## Deployment Section (5pt)
 - How It's Made section (+2pt How Its Made, +1pt Visuals)
     - Located in readme, section is labled How Its Made, is what you are currently looking at
@@ -51,7 +56,7 @@ Group Project for tri3!
     - [Link to video](https://www.youtube.com/watch?v=XnYaSJoKWxE&ab_channel=Purplebears)
 # Code Explanations
 ## Home page: Displays random user submitted playlists on button click (Komay)
-- [Link to RUNTIME](http://rubinfamily.dyndns.org:5000/)
+- [Link to RUNTIME](https://kpop.nighthawkcodingsociety.com/ks/)
 - [Link to html and js code](https://github.com/zenxha/kpop/blob/main/templates/index.html#L1-L106) 
 ```html
             <div class="container justify-content-start" style="margin-right: -25%; padding-right:-35%; margin-top: 2%; margin-bottom: 1%;">
